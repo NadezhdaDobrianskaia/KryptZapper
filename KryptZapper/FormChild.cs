@@ -16,5 +16,11 @@ namespace KryptZapper
         {
             InitializeComponent();
         }
+        public FormChild(string filename)     //constructor
+        {
+            InitializeComponent();
+            richTextBox1.Text = filename;
+        }
+        
     }
 }
