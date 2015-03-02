@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KryptZapper
 {
-    public partial class Form1 : Form
+    public partial class FormChild : Form
     {
-        public Form1()
+        public FormChild()
         {
             InitializeComponent();
         }
