@@ -67,6 +67,9 @@
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChild.resx">
+      <DependentUpon>FormChild.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormParent.resx">
       <DependentUpon>FormParent.cs</DependentUpon>
     </EmbeddedResource>
