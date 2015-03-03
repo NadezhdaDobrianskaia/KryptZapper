@@ -18,6 +18,7 @@ namespace KryptZapper
         {
             InitializeComponent();
         }
+
         public FormChild(string filename)     //constructor
         {
             InitializeComponent();

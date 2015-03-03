@@ -95,5 +95,15 @@ namespace KryptZapper
         {
             LayoutMdi(MdiLayout.TileHorizontal);
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void encrypt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
