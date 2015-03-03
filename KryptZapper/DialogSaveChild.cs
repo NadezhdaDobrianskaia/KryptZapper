@@ -16,5 +16,15 @@ namespace KryptZapper
         {
             InitializeComponent();
         }
+
+        private void textBoxSave_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DialogSaveChildLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
