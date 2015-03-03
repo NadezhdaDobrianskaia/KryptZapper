@@ -58,7 +58,7 @@
             this.richTextBoxAbout.ReadOnly = true;
             this.richTextBoxAbout.Size = new System.Drawing.Size(309, 253);
             this.richTextBoxAbout.TabIndex = 2;
-            this.richTextBoxAbout.Text = "The about Text will go here";
+            this.richTextBoxAbout.Text = "Krypt-Zapper is a blah blah";
             // 
             // AboutDialog
             // 
