@@ -30,44 +30,44 @@
         {
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.textBoxSave = new System.Windows.Forms.TextBox();
+            this.dialogSaveChildLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonOk
             // 
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(61, 78);
+            this.buttonOk.Location = new System.Drawing.Point(24, 65);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "Ok";
+            this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(161, 78);
+            this.buttonCancel.Location = new System.Drawing.Point(139, 65);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // textBoxSave
+            // dialogSaveChildLabel
             // 
-            this.textBoxSave.Location = new System.Drawing.Point(91, 31);
-            this.textBoxSave.Name = "textBoxSave";
-            this.textBoxSave.ReadOnly = true;
-            this.textBoxSave.Size = new System.Drawing.Size(129, 20);
-            this.textBoxSave.TabIndex = 2;
-            this.textBoxSave.Text = "Would you like to Save?";
+            this.dialogSaveChildLabel.AutoSize = true;
+            this.dialogSaveChildLabel.Location = new System.Drawing.Point(58, 25);
+            this.dialogSaveChildLabel.Name = "dialogSaveChildLabel";
+            this.dialogSaveChildLabel.Size = new System.Drawing.Size(121, 13);
+            this.dialogSaveChildLabel.TabIndex = 2;
+            this.dialogSaveChildLabel.Text = "Would you like to save?";
             // 
             // DialogSaveChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 124);
-            this.Controls.Add(this.textBoxSave);
+            this.ClientSize = new System.Drawing.Size(243, 124);
+            this.Controls.Add(this.dialogSaveChildLabel);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Name = "DialogSaveChild";
@@ -81,6 +81,6 @@
 
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.TextBox textBoxSave;
+        private System.Windows.Forms.Label dialogSaveChildLabel;
     }
 }
