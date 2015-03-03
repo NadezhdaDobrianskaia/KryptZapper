@@ -5,10 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
+using System.Security;
+using System.Security.Cryptography; //provides variety of tools to help with encryption and with decryption
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace KryptZapper
 {
@@ -17,6 +19,9 @@ namespace KryptZapper
         string ext = null; //added for the saveAs
         string justSave = null; //added for the saveAs
 
+        //*****DESCryptoServiceProvider is based on a symmetric encryption algorithm.  
+        //*****Symmetric encryption requires a key and an initialization vector(IV) to encrypt the data
+        //*****To decrypt the data you must use the same key and save IV.
         //For Encryption
         string passPhrase = "Pasword";        // can be any string
         string saltValue = "sALtValue";        // can be any string
@@ -120,8 +125,7 @@ namespace KryptZapper
 
         private string Encrypt(string data)
         {
-            MessageBox.Show("Trying to Encrypt");
-            
+            MessageBox.Show("Trying to Encrypt");    
             byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
             byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
             byte[] buffer = Encoding.UTF8.GetBytes(data);
@@ -130,13 +134,37 @@ namespace KryptZapper
             managed.Mode = CipherMode.CBC;
             ICryptoTransform transform = managed.CreateEncryptor(rgbKey, bytes);
             MemoryStream stream = new MemoryStream();
-            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Write);
+            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Write); //CryptoStream class is designed to encrypt or to decrypt content as it is streamed out to a file
             stream2.Write(buffer, 0, buffer.Length);
             stream2.FlushFinalBlock();
             byte[] inArray = stream.ToArray();
             stream.Close();
             stream2.Close();
             return Convert.ToBase64String(inArray);
+        }
+
+        public void DecryptChild()
+        {
+            string text = richTextBox1.Text;
+            MyEncryptedText = Decrypt(text);
+            richTextBox1.Text = MyEncryptedText;
+        }
+        private string Decrypt(string data)
+        {
+            byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
+            byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
+            byte[] buffer = Convert.FromBase64String(data);
+            byte[] rgbKey = new PasswordDeriveBytes(this.passPhrase, rgbSalt, this.hashAlgorithm, this.passwordIterations).GetBytes(this.keySize / 8);
+            RijndaelManaged managed = new RijndaelManaged();
+            managed.Mode = CipherMode.CBC;
+            ICryptoTransform transform = managed.CreateDecryptor(rgbKey, bytes);
+            MemoryStream stream = new MemoryStream(buffer);
+            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Read);
+            byte[] buffer5 = new byte[buffer.Length];
+            int count = stream2.Read(buffer5, 0, buffer5.Length);
+            stream.Close();
+            stream2.Close();
+            return Encoding.UTF8.GetString(buffer5, 0, count);
         }
     }
 }

@@ -15,9 +15,7 @@ namespace KryptZapper
     public partial class FormParent : Form
     {
 
-        Form thisChild;
-
-        
+        Form thisChild;  
 
         public FormParent()
         {
@@ -133,11 +131,12 @@ namespace KryptZapper
 
         }
 
-
-
         private void toolStripDecryptButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Decrypting document");
+            thisChild = this.ActiveMdiChild;
+            FormChild child = (FormChild)thisChild;
+            child.DecryptChild();
         }
 
         private void toolStripEmailButton_Click(object sender, EventArgs e)
