@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,8 +14,10 @@ namespace KryptZapper
 {
     public partial class FormParent : Form
     {
-//removed for the saveAs
+
         Form thisChild;
+
+        
 
         public FormParent()
         {
@@ -118,10 +122,18 @@ namespace KryptZapper
             Application.Exit();
         }
 
+        string Encrypted;
         private void encrypt_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Encrypting document");
+            thisChild = this.ActiveMdiChild;
+            FormChild child = (FormChild)thisChild;
+            child.EncryptChild();
+
+
         }
+
+
 
         private void toolStripDecryptButton_Click(object sender, EventArgs e)
         {
@@ -141,6 +153,11 @@ namespace KryptZapper
         private void ClosingParentForm(object sender, FormClosingEventArgs e)
         {
             exitToolStripMenuItem_Click(sender, e);
+        }
+
+        private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
