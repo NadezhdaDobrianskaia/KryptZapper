@@ -123,12 +123,12 @@ namespace KryptZapper
             MessageBox.Show("Encrypting document");
         }
 
-        private void toolStripDecryptButton_Click(object sender, EventArgs e)
+        private void decrypt_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Decrypting document");
         }
 
-        private void toolStripEmailButton_Click(object sender, EventArgs e)
+        private void email_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Emailing document");
         }

@@ -180,14 +180,14 @@
             this.decriptToolStripMenuItem.Name = "decriptToolStripMenuItem";
             this.decriptToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.decriptToolStripMenuItem.Text = "&Decrypt";
-            this.decriptToolStripMenuItem.Click += new System.EventHandler(this.toolStripDecryptButton_Click);
+            this.decriptToolStripMenuItem.Click += new System.EventHandler(this.decrypt_Click);
             // 
             // emailToolStripMenuItem
             // 
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
             this.emailToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.emailToolStripMenuItem.Text = "&Email";
-            this.emailToolStripMenuItem.Click += new System.EventHandler(this.toolStripEmailButton_Click);
+            this.emailToolStripMenuItem.Click += new System.EventHandler(this.email_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -253,7 +253,7 @@
             this.toolStripDecryptButton.Name = "toolStripDecryptButton";
             this.toolStripDecryptButton.Size = new System.Drawing.Size(46, 20);
             this.toolStripDecryptButton.Text = "toolStripButton2";
-            this.toolStripDecryptButton.Click += new System.EventHandler(this.toolStripDecryptButton_Click);
+            this.toolStripDecryptButton.Click += new System.EventHandler(this.decrypt_Click);
             // 
             // toolStripSeparator2
             // 
@@ -274,7 +274,7 @@
             this.toolStripEmailButton.Name = "toolStripEmailButton";
             this.toolStripEmailButton.Size = new System.Drawing.Size(46, 20);
             this.toolStripEmailButton.Text = "toolStripButton3";
-            this.toolStripEmailButton.Click += new System.EventHandler(this.toolStripEmailButton_Click);
+            this.toolStripEmailButton.Click += new System.EventHandler(this.email_Click);
             // 
             // FormParent
             // 
