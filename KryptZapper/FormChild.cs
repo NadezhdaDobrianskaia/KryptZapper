@@ -14,14 +14,17 @@ namespace KryptZapper
     {
         string ext = null; //added for the saveAs
         string justSave = null; //added for the saveAs
+
         public FormChild()
         {
             InitializeComponent();
         }
+
         public FormChild(string filename)     //constructor
         {
             InitializeComponent();
             richTextBox1.Text = filename;
+            justSave = filename;
         }
 
         /// <summary>
@@ -50,15 +53,21 @@ namespace KryptZapper
         /// otherwise call saveAs.
         /// </summary>
         public void save()
+
         {
+            string text = richTextBox1.Text;
+            MessageBox.Show("SaveWasPressed");
             if (System.IO.File.Exists(justSave))
             {
+                System.IO.File.WriteAllText(justSave, text);
                 MessageBox.Show("FileExists");
-                
+                MessageBox.Show(justSave);
             }
             else
+            {
+                MessageBox.Show("File did not Exist");
                 saveAs();
+            }
         }
-
     }
 }
