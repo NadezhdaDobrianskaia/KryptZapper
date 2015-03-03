@@ -10,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* This program encrypts and decrypts text.
+ * 
+ * Authors: Nadia Dobrianskaia, Rosanna Wubs, Becky Zhou
+ * Prototype Version: 1.0
+ */
 namespace KryptZapper
 {
     public partial class FormParent : Form
