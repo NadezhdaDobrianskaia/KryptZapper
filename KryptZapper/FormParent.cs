@@ -12,8 +12,9 @@ namespace KryptZapper
 {
     public partial class FormParent : Form
     {
-        string ext = null;
-        string justSave = null;
+//removed for the saveAs
+        Form thisChild;
+
         public FormParent()
         {
             InitializeComponent();
@@ -48,27 +49,35 @@ namespace KryptZapper
             }
         }
 
+
+        /// <summary>
+        /// When the saveAs.. is clicked from the menu strip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveText = new SaveFileDialog();
-            /*if (saveText.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                ext = System.IO.Path.GetExtension(saveText.FileName);
 
-                string text = "A class is the most powerful data type in C#. Like a structure, " +
-                           "a class defines the data and behavior of the data type. ";
-                System.IO.File.WriteAllText(@"C:Libraries\Documents\WriteText.txt", text);
-                justSave = saveText.FileName;
-            }*/
-            string text = "A class is the most powerful data type in C#. Like a structure, " +
-                           "a class defines the data and behavior of the data type. ";
-            System.IO.File.WriteAllText(@"C:\BCIT-Nadia\WriteText.txt", text);
-            MessageBox.Show("SaveWorked");
+            thisChild = this.ActiveMdiChild;
+            if (thisChild != null)
+            {
+                FormChild child = (FormChild)thisChild;
+                child.saveAs();
+            }
+            else
+                MessageBox.Show("Must Have at least one file opened");
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            thisChild = this.ActiveMdiChild;
+            if (thisChild != null)
+            {
+                FormChild child = (FormChild)thisChild;
+                child.save();
+            }
+            else
+                MessageBox.Show("Must Have at least one file opened");
         }
 
 

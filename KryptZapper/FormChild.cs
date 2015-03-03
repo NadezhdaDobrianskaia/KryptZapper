@@ -12,6 +12,8 @@ namespace KryptZapper
 {
     public partial class FormChild : Form
     {
+        string ext = null; //added for the saveAs
+        string justSave = null; //added for the saveAs
         public FormChild()
         {
             InitializeComponent();
@@ -21,6 +23,42 @@ namespace KryptZapper
             InitializeComponent();
             richTextBox1.Text = filename;
         }
-        
+
+        /// <summary>
+        /// Saving text in the Child Form
+        /// </summary>
+        public void saveAs()
+        {
+            SaveFileDialog saveText = new SaveFileDialog();
+            saveText.Filter = "Text Files | *.txt";
+            string text = richTextBox1.Text;
+            
+            if (saveText.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.Stream fileStream = saveText.OpenFile();
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(fileStream);
+                sw.WriteLine(text);
+                sw.Flush();
+                sw.Close();
+                justSave = saveText.FileName;
+                MessageBox.Show(justSave);
+            }
+        }
+
+        /// <summary>
+        /// When clicking save. test to see if file exists.  If it does overwrite it
+        /// otherwise call saveAs.
+        /// </summary>
+        public void save()
+        {
+            if (System.IO.File.Exists(justSave))
+            {
+                MessageBox.Show("FileExists");
+                
+            }
+            else
+                saveAs();
+        }
+
     }
 }
