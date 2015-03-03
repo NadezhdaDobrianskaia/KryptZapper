@@ -79,5 +79,18 @@ namespace KryptZapper
                 save();
             this.Dispose();
         }
+
+        private void ClosingChildForm(object sender, FormClosingEventArgs e)
+        {
+            DialogSaveChild close = new DialogSaveChild();
+            if (close.ShowDialog() == DialogResult.OK)
+            {
+                this.close();
+            }
+            else
+            {
+                this.Dispose();
+            }
+        }
     }
 }
