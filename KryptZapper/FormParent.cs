@@ -42,8 +42,9 @@ namespace KryptZapper
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 String filename = openFileDialogParent.FileName;
+                MessageBox.Show(filename);
                 string text = System.IO.File.ReadAllText(filename);
-                FormChild child = new FormChild(text);
+                FormChild child = new FormChild(filename, text); //filename is the path
                 child.MdiParent = this;
                 child.Text = filename;
                 child.Show(); //show the child    

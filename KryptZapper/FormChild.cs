@@ -20,11 +20,13 @@ namespace KryptZapper
             InitializeComponent();
         }
 
-        public FormChild(string filename)     //constructor
+        public FormChild(string path, string file)     //constructor
         {
             InitializeComponent();
-            richTextBox1.Text = filename;
-            justSave = filename;
+            //richTextBox1.Text = filename;
+            MessageBox.Show("I opened a file");
+            justSave = path;
+            MessageBox.Show(file);
         }
 
         /// <summary>
