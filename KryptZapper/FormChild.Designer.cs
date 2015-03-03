@@ -52,6 +52,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormChild";
             this.Text = "New File";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingChildForm);
             this.ResumeLayout(false);
 
         }

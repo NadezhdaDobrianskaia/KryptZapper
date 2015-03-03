@@ -20,11 +20,13 @@ namespace KryptZapper
             InitializeComponent();
         }
 
-        public FormChild(string filename)     //constructor
+        public FormChild(string path, string file)     //constructor
         {
             InitializeComponent();
-            richTextBox1.Text = filename;
-            justSave = filename;
+            //richTextBox1.Text = filename;
+            MessageBox.Show("I opened a file");
+            justSave = path;
+            MessageBox.Show(file);
         }
 
         /// <summary>
@@ -78,6 +80,19 @@ namespace KryptZapper
             else
                 save();
             this.Dispose();
+        }
+
+        private void ClosingChildForm(object sender, FormClosingEventArgs e)
+        {
+            DialogSaveChild close = new DialogSaveChild();
+            if (close.ShowDialog() == DialogResult.OK)
+            {
+                this.close();
+            }
+            else
+            {
+                this.Dispose();
+            }
         }
     }
 }
