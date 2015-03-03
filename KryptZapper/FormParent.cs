@@ -120,7 +120,17 @@ namespace KryptZapper
 
         private void encrypt_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Encrypting document");
+        }
 
+        private void toolStripDecryptButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Decrypting document");
+        }
+
+        private void toolStripEmailButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Emailing document");
         }
 
         private void FormParent_Load(object sender, EventArgs e)
