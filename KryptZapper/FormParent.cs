@@ -178,7 +178,7 @@ namespace KryptZapper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripDecryptButton_Click(object sender, EventArgs e)
+        private void decrypt_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Decrypting document");
         }
@@ -188,7 +188,7 @@ namespace KryptZapper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripEmailButton_Click(object sender, EventArgs e)
+        private void email_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Emailing document");
         }
