@@ -84,7 +84,9 @@ namespace KryptZapper
             }
         }
 
-
+        /// <summary>
+        /// executes closing protocols
+        /// </summary>
         public void close()
         {
             if (justSave == null)
@@ -94,6 +96,11 @@ namespace KryptZapper
             this.Dispose();
         }
 
+        /// <summary>
+        /// handles closing events for child forms
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClosingChildForm(object sender, FormClosingEventArgs e)
         {
             DialogSaveChild close = new DialogSaveChild();
@@ -107,10 +114,11 @@ namespace KryptZapper
             }
         }
 
-
-
-
         String MyEncryptedText;
+
+        /// <summary>
+        /// grabs text from MDI child and stores it in a string
+        /// </summary>
         public void EncryptChild()
         {
             string text = richTextBox1.Text;
@@ -118,6 +126,11 @@ namespace KryptZapper
             richTextBox1.Text = MyEncryptedText;
         }
 
+        /// <summary>
+        /// encrypts messages
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         private string Encrypt(string data)
         {
             MessageBox.Show("Trying to Encrypt");
