@@ -121,5 +121,15 @@ namespace KryptZapper
         {
 
         }
+
+        private void FormParent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClosingParentForm(object sender, FormClosingEventArgs e)
+        {
+            exitToolStripMenuItem_Click(sender, e);
+        }
     }
 }
