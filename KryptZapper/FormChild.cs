@@ -69,5 +69,15 @@ namespace KryptZapper
                 saveAs();
             }
         }
+
+
+        public void close()
+        {
+            if (justSave == null)
+                saveAs();
+            else
+                save();
+            this.Dispose();
+        }
     }
 }

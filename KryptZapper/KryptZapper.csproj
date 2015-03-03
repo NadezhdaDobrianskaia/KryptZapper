@@ -50,6 +50,12 @@
     <Compile Include="AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogSaveChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogSaveChild.Designer.cs">
+      <DependentUpon>DialogSaveChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChild.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSaveChild.resx">
+      <DependentUpon>DialogSaveChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChild.resx">
       <DependentUpon>FormChild.cs</DependentUpon>

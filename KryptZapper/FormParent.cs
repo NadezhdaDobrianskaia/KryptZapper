@@ -98,7 +98,23 @@ namespace KryptZapper
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            thisChild = this.ActiveMdiChild;
+            while (thisChild != null)
+            {
+                FormChild child = (FormChild)thisChild;
+                DialogSaveChild close = new DialogSaveChild();
+                if (close.ShowDialog() == DialogResult.OK)
+                {
+                    child.close();
+                }
+                else
+                {
+                    child.Dispose();
+                }
+                thisChild = this.ActiveMdiChild;
+            }
             
+            Application.Exit();
         }
 
         private void encrypt_Click(object sender, EventArgs e)
@@ -106,5 +122,14 @@ namespace KryptZapper
 
         }
 
+        private void FormParent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClosingParentForm(object sender, FormClosingEventArgs e)
+        {
+            exitToolStripMenuItem_Click(sender, e);
+        }
     }
 }
