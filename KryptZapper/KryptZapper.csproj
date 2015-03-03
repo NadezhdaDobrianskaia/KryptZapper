@@ -81,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +95,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlockIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lockIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kryptZapIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kryptzapicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emailIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\documentIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

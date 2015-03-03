@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChild));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(2, 13);
+            this.richTextBox1.Location = new System.Drawing.Point(2, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(280, 222);
+            this.richTextBox1.Size = new System.Drawing.Size(280, 262);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -45,8 +46,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.richTextBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormChild";
-            this.Text = "FormChild";
+            this.Text = "New File";
             this.ResumeLayout(false);
 
         }

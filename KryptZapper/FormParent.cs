@@ -80,7 +80,19 @@ namespace KryptZapper
                 MessageBox.Show("Must Have at least one file opened");
         }
 
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
 
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
 
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
     }
 }

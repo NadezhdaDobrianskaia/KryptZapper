@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormParent));
             this.menuStripParent = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +48,17 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogParent = new System.Windows.Forms.OpenFileDialog();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripEncryptLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripEncryptButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripDecryptLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripDecryptButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripEmailLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripEmailButton = new System.Windows.Forms.ToolStripButton();
             this.menuStripParent.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripParent
@@ -58,7 +70,7 @@
             this.aboutToolStripMenuItem});
             this.menuStripParent.Location = new System.Drawing.Point(0, 0);
             this.menuStripParent.Name = "menuStripParent";
-            this.menuStripParent.Size = new System.Drawing.Size(284, 24);
+            this.menuStripParent.Size = new System.Drawing.Size(657, 24);
             this.menuStripParent.TabIndex = 1;
             this.menuStripParent.Text = "menuStripParent";
             // 
@@ -69,6 +81,7 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -77,35 +90,40 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveAsToolStripMenuItem.Text = "&SaveAs..";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Text = "&Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(120, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
             // viewToolStripMenuItem
@@ -121,20 +139,23 @@
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascade";
+            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
             // tileToolStripMenuItem
             // 
             this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
-            this.tileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.tileToolStripMenuItem.Text = "&Tile";
+            this.tileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.tileToolStripMenuItem.Text = "&Tile Vertical";
+            this.tileToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
             // horizontalToolStripMenuItem
             // 
             this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.horizontalToolStripMenuItem.Text = "&Horizontal";
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.horizontalToolStripMenuItem.Text = "&Tile Horizontal";
+            this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -149,19 +170,19 @@
             // encriptToolStripMenuItem
             // 
             this.encriptToolStripMenuItem.Name = "encriptToolStripMenuItem";
-            this.encriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.encriptToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.encriptToolStripMenuItem.Text = "&Encrypt";
             // 
             // decriptToolStripMenuItem
             // 
             this.decriptToolStripMenuItem.Name = "decriptToolStripMenuItem";
-            this.decriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.decriptToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.decriptToolStripMenuItem.Text = "&Decrypt";
             // 
             // emailToolStripMenuItem
             // 
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.emailToolStripMenuItem.Text = "&Email";
             // 
             // aboutToolStripMenuItem
@@ -175,18 +196,95 @@
             // 
             this.openFileDialogParent.FileName = "openFileDialogParent";
             // 
+            // toolStrip
+            // 
+            this.toolStrip.Dock = System.Windows.Forms.DockStyle.Right;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripEncryptLabel,
+            this.toolStripEncryptButton,
+            this.toolStripSeparator1,
+            this.toolStripDecryptLabel,
+            this.toolStripDecryptButton,
+            this.toolStripSeparator2,
+            this.toolStripEmailLabel,
+            this.toolStripEmailButton});
+            this.toolStrip.Location = new System.Drawing.Point(608, 24);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(49, 534);
+            this.toolStrip.TabIndex = 3;
+            this.toolStrip.Text = "toolStrip";
+            // 
+            // toolStripEncryptLabel
+            // 
+            this.toolStripEncryptLabel.Name = "toolStripEncryptLabel";
+            this.toolStripEncryptLabel.Size = new System.Drawing.Size(46, 15);
+            this.toolStripEncryptLabel.Text = "Encrypt";
+            // 
+            // toolStripEncryptButton
+            // 
+            this.toolStripEncryptButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripEncryptButton.Image = global::KryptZapper.Properties.Resources._lock;
+            this.toolStripEncryptButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEncryptButton.Name = "toolStripEncryptButton";
+            this.toolStripEncryptButton.Size = new System.Drawing.Size(46, 20);
+            this.toolStripEncryptButton.Text = "toolStripButton1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(46, 6);
+            // 
+            // toolStripDecryptLabel
+            // 
+            this.toolStripDecryptLabel.Name = "toolStripDecryptLabel";
+            this.toolStripDecryptLabel.Size = new System.Drawing.Size(46, 15);
+            this.toolStripDecryptLabel.Text = "Decrypt";
+            // 
+            // toolStripDecryptButton
+            // 
+            this.toolStripDecryptButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDecryptButton.Image = global::KryptZapper.Properties.Resources.unlock;
+            this.toolStripDecryptButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDecryptButton.Name = "toolStripDecryptButton";
+            this.toolStripDecryptButton.Size = new System.Drawing.Size(46, 20);
+            this.toolStripDecryptButton.Text = "toolStripButton2";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(46, 6);
+            // 
+            // toolStripEmailLabel
+            // 
+            this.toolStripEmailLabel.Name = "toolStripEmailLabel";
+            this.toolStripEmailLabel.Size = new System.Drawing.Size(46, 15);
+            this.toolStripEmailLabel.Text = "Email";
+            // 
+            // toolStripEmailButton
+            // 
+            this.toolStripEmailButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripEmailButton.Image = global::KryptZapper.Properties.Resources.email;
+            this.toolStripEmailButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEmailButton.Name = "toolStripEmailButton";
+            this.toolStripEmailButton.Size = new System.Drawing.Size(46, 20);
+            this.toolStripEmailButton.Text = "toolStripButton3";
+            // 
             // FormParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(657, 558);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStripParent);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripParent;
             this.Name = "FormParent";
-            this.Text = "FormParent";
+            this.Text = "Krypt-Zapper";
             this.menuStripParent.ResumeLayout(false);
             this.menuStripParent.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,6 +310,16 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialogParent;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripLabel toolStripEncryptLabel;
+        private System.Windows.Forms.ToolStripButton toolStripEncryptButton;
+        private System.Windows.Forms.ToolStripLabel toolStripDecryptLabel;
+        private System.Windows.Forms.ToolStripButton toolStripDecryptButton;
+        private System.Windows.Forms.ToolStripLabel toolStripEmailLabel;
+        private System.Windows.Forms.ToolStripButton toolStripEmailButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
