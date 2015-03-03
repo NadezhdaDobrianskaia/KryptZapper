@@ -45,6 +45,7 @@ namespace KryptZapper
                 string text = System.IO.File.ReadAllText(filename);
                 FormChild child = new FormChild(text);
                 child.MdiParent = this;
+                child.Text = filename;
                 child.Show(); //show the child    
             }
         }

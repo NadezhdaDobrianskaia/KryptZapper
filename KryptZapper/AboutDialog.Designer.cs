@@ -39,10 +39,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOk.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonOk.Location = new System.Drawing.Point(107, 227);
+            this.buttonOk.Location = new System.Drawing.Point(107, 271);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Size = new System.Drawing.Size(125, 23);
             this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             this.richTextBoxAbout.Location = new System.Drawing.Point(13, 12);
             this.richTextBoxAbout.Name = "richTextBoxAbout";
             this.richTextBoxAbout.ReadOnly = true;
-            this.richTextBoxAbout.Size = new System.Drawing.Size(259, 209);
+            this.richTextBoxAbout.Size = new System.Drawing.Size(309, 253);
             this.richTextBoxAbout.TabIndex = 2;
             this.richTextBoxAbout.Text = "The about Text will go here";
             // 
@@ -64,10 +64,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(334, 306);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.richTextBoxAbout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(350, 200);
             this.Name = "AboutDialog";
             this.Text = "About Krypt-Zapper";
             this.ResumeLayout(false);
