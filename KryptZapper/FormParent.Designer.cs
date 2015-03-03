@@ -171,21 +171,21 @@
             // encriptToolStripMenuItem
             // 
             this.encriptToolStripMenuItem.Name = "encriptToolStripMenuItem";
-            this.encriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.encriptToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.encriptToolStripMenuItem.Text = "&Encrypt";
             this.encriptToolStripMenuItem.Click += new System.EventHandler(this.encrypt_Click);
             // 
             // decriptToolStripMenuItem
             // 
             this.decriptToolStripMenuItem.Name = "decriptToolStripMenuItem";
-            this.decriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.decriptToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.decriptToolStripMenuItem.Text = "&Decrypt";
             this.decriptToolStripMenuItem.Click += new System.EventHandler(this.toolStripDecryptButton_Click);
             // 
             // emailToolStripMenuItem
             // 
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.emailToolStripMenuItem.Text = "&Email";
             this.emailToolStripMenuItem.Click += new System.EventHandler(this.toolStripEmailButton_Click);
             // 
@@ -288,6 +288,8 @@
             this.MainMenuStrip = this.menuStripParent;
             this.Name = "FormParent";
             this.Text = "Krypt-Zapper";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingParentForm);
+            this.Load += new System.EventHandler(this.FormParent_Load);
             this.menuStripParent.ResumeLayout(false);
             this.menuStripParent.PerformLayout();
             this.toolStrip.ResumeLayout(false);
