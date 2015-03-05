@@ -10,10 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/* This program encrypts and decrypts text.
- * 
+/* Purpose: This program allows users to encrypt and decrypt messages composed of text only.
+ *          The encrypted data can also be emailed to another user and decrypted at the receiving end.
  * Authors: Nadia Dobrianskaia, Rosanna Wubs, Becky Zhou
  * Prototype Version: 1.0
+ * Date: Feb 03, 2015
  */
 namespace KryptZapper
 {
