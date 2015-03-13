@@ -197,6 +197,9 @@ namespace KryptZapper
         private void email_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Emailing document");
+            thisChild = this.ActiveMdiChild;
+            FormChild child = (FormChild)thisChild;
+            child.EmailChild();
         }
 
         /// <summary>

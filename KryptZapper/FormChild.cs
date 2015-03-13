@@ -126,6 +126,13 @@ namespace KryptZapper
             richTextBox1.Text = MyEncryptedText;
         }
 
+        public void EmailChild()
+        {
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
+            proc.Start();
+        }
+
         /// <summary>
         /// encrypts messages
         /// </summary>
