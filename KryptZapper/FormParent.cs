@@ -187,6 +187,9 @@ namespace KryptZapper
         private void decrypt_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Decrypting document");
+            thisChild = this.ActiveMdiChild;
+            FormChild child = (FormChild)thisChild;
+            child.DecryptChild();
         }
 
         /// <summary>
