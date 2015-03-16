@@ -202,7 +202,15 @@ namespace KryptZapper
             MessageBox.Show("Emailing document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
-            child.EmailChild();
+            try
+            {
+                child.EmailChild();
+            }
+            catch(NullReferenceException nre)
+            {
+                Console.WriteLine("An exception is caught", nre);
+            }
+            
         }
 
         /// <summary>
