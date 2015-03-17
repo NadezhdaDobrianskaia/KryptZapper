@@ -186,5 +186,21 @@ namespace KryptZapper
             stream2.Close();
             return Encoding.UTF8.GetString(buffer5, 0, count);
         }
+
+        private void UserControlEncrypDecryp_NadiaDecryption_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Decryption Should go here");
+
+        }
+
+        private void UserControlEncrypDecryp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserControlEncrypDecryp_NadiaEncryption_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Encryption Should go here");
+        }
     }
 }
