@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChild));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.nadiaUserControl1 = new NadiaUserControl.NadiaUserControl();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -40,11 +41,22 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
+            // nadiaUserControl1
+            // 
+            this.nadiaUserControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.nadiaUserControl1.Location = new System.Drawing.Point(88, 181);
+            this.nadiaUserControl1.Name = "nadiaUserControl1";
+            this.nadiaUserControl1.Size = new System.Drawing.Size(207, 119);
+            this.nadiaUserControl1.TabIndex = 1;
+            this.nadiaUserControl1.NadiaEncryption_Click += new NadiaUserControl.NadiaClickHandler(this.nadiaUserControl1_NadiaEncryption_Click);
+            this.nadiaUserControl1.NadiaDecryption_Click += new NadiaUserControl.NadiaClickHandler(this.nadiaUserControl1_NadiaDecryption_Click);
+            // 
             // FormChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(393, 312);
+            this.Controls.Add(this.nadiaUserControl1);
             this.Controls.Add(this.richTextBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormChild";
@@ -57,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private NadiaUserControl.NadiaUserControl nadiaUserControl1;
     }
 }
