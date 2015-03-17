@@ -52,6 +52,7 @@
             // 
             // emailSendButton
             // 
+            this.emailSendButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.emailSendButton.Location = new System.Drawing.Point(151, 81);
             this.emailSendButton.Name = "emailSendButton";
             this.emailSendButton.Size = new System.Drawing.Size(75, 23);
