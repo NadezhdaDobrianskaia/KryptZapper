@@ -22,6 +22,8 @@ namespace KryptZapper
     {
 
         Form thisChild;
+        bool isDefaultSet;
+        string defaultEmailMethod;
 
         public FormParent()
         {
@@ -241,6 +243,15 @@ namespace KryptZapper
         private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void setUpAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountSetUpDialog setupPage = new AccountSetUpDialog();
+            if (setupPage.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Submit worked");
+            }
         }
     }
 }
