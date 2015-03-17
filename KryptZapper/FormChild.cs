@@ -208,5 +208,15 @@ namespace KryptZapper
         {
             MessageBox.Show("Encryption Should go here");
         }
+
+        private void nadiaUserControl1_NadiaDecryption_Click(object sender, EventArgs e)
+        {
+            DecryptChild();
+        }
+
+        private void nadiaUserControl1_NadiaEncryption_Click(object sender, EventArgs e)
+        {
+            EncryptChild();
+        }
     }
 }

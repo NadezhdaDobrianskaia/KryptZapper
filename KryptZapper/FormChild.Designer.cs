@@ -46,10 +46,12 @@
             // nadiaUserControl1
             // 
             this.nadiaUserControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.nadiaUserControl1.Location = new System.Drawing.Point(102, 181);
+            this.nadiaUserControl1.Location = new System.Drawing.Point(90, 181);
             this.nadiaUserControl1.Name = "nadiaUserControl1";
             this.nadiaUserControl1.Size = new System.Drawing.Size(207, 119);
             this.nadiaUserControl1.TabIndex = 1;
+            this.nadiaUserControl1.NadiaEncryption_Click += new NadiaUserControl.NadiaClickHandler(this.nadiaUserControl1_NadiaEncryption_Click);
+            this.nadiaUserControl1.NadiaDecryption_Click += new NadiaUserControl.NadiaClickHandler(this.nadiaUserControl1_NadiaDecryption_Click);
             // 
             // FormChild
             // 
