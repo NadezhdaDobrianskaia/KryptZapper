@@ -35,7 +35,7 @@ namespace KryptZapper
         //---end for Encryption
 
 
-        public FormChild(Form Parent f)
+        public FormChild(FormParent f)
         {
             InitializeComponent();
             formParent = f;
