@@ -10,6 +10,8 @@ using System.Security.Cryptography; //provides variety of tools to help with enc
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
+using System.Net;
 
 
 namespace KryptZapper
@@ -34,6 +36,9 @@ namespace KryptZapper
         int keySize = 256;                // can be 192 or 128
         //---end for Encryption
 
+        MailAddress fromAddress = new MailAddress("KryptZapper@gmail.com", "From Name");
+        MailAddress toAddress = new MailAddress("KryptZapper@gmail.com", "To Name");
+        const string fromPassword = "techpro3951";
 
         public FormChild(FormParent f)
         {
@@ -139,9 +144,26 @@ namespace KryptZapper
 
         public void EmailChild()
         {
-            System.Diagnostics.Process proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
-            proc.Start();
+            //System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            //proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
+            //proc.Start();
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Krypt-Zapper Message",
+                Body = richTextBox1.Text
+            })
+            {
+                smtp.Send(message);
+            }
         }
 
         /// <summary>
