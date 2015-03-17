@@ -5,21 +5,23 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
+using System.Security;
+using System.Security.Cryptography; //provides variety of tools to help with encryption and with decryption
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace KryptZapper
 {
     public partial class FormChild : Form
     {
-        //reference for it's parent
-        private FormParent formParent;
-
         string ext = null; //added for the saveAs
         string justSave = null; //added for the saveAs
 
+        //*****DESCryptoServiceProvider is based on a symmetric encryption algorithm.  
+        //*****Symmetric encryption requires a key and an initialization vector(IV) to encrypt the data
+        //*****To decrypt the data you must use the same key and save IV.
         //For Encryption
         string passPhrase = "Pasword";        // can be any string
         string saltValue = "sALtValue";        // can be any string
@@ -29,26 +31,15 @@ namespace KryptZapper
         int keySize = 256;                // can be 192 or 128
         //---end for Encryption
 
-        /// <summary>
-        /// constructor passes in it's parents reference
-        /// </summary>
-        /// <param name="f"></param>
-        public FormChild(FormParent f)
+
+        public FormChild()
         {
             InitializeComponent();
-            formParent = f;
         }
 
-        /// <summary>
-        /// constructor2 if opened via a file, passed in the parents ref
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="file"></param>
-        /// <param name="f"></param>
-        public FormChild(string path, string file, FormParent f)     //constructor
+        public FormChild(string path, string file)     //constructor
         {
             InitializeComponent();
-            formParent = f;
             richTextBox1.Text = file;
             MessageBox.Show("I opened a file");
             justSave = path;
@@ -108,7 +99,6 @@ namespace KryptZapper
             else
                 save();
             this.Dispose();
-            formParent.updateControls();
         }
 
         /// <summary>
@@ -126,7 +116,6 @@ namespace KryptZapper
             else
             {
                 this.Dispose();
-                formParent.updateControls();
             }
         }
 
@@ -142,9 +131,6 @@ namespace KryptZapper
             richTextBox1.Text = MyEncryptedText;
         }
 
-        /// <summary>
-        /// begins an email with the message body the text in the form
-        /// </summary>
         public void EmailChild()
         {
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
@@ -159,8 +145,7 @@ namespace KryptZapper
         /// <returns></returns>
         private string Encrypt(string data)
         {
-            MessageBox.Show("Trying to Encrypt");
-            
+            MessageBox.Show("Trying to Encrypt");    
             byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
             byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
             byte[] buffer = Encoding.UTF8.GetBytes(data);
@@ -169,7 +154,7 @@ namespace KryptZapper
             managed.Mode = CipherMode.CBC;
             ICryptoTransform transform = managed.CreateEncryptor(rgbKey, bytes);
             MemoryStream stream = new MemoryStream();
-            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Write);
+            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Write); //CryptoStream class is designed to encrypt or to decrypt content as it is streamed out to a file
             stream2.Write(buffer, 0, buffer.Length);
             stream2.FlushFinalBlock();
             byte[] inArray = stream.ToArray();
@@ -178,5 +163,44 @@ namespace KryptZapper
             return Convert.ToBase64String(inArray);
         }
 
+        public void DecryptChild()
+        {
+            string text = richTextBox1.Text;
+            MyEncryptedText = Decrypt(text);
+            richTextBox1.Text = MyEncryptedText;
+        }
+        private string Decrypt(string data)
+        {
+            byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
+            byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
+            byte[] buffer = Convert.FromBase64String(data);
+            byte[] rgbKey = new PasswordDeriveBytes(this.passPhrase, rgbSalt, this.hashAlgorithm, this.passwordIterations).GetBytes(this.keySize / 8);
+            RijndaelManaged managed = new RijndaelManaged();
+            managed.Mode = CipherMode.CBC;
+            ICryptoTransform transform = managed.CreateDecryptor(rgbKey, bytes);
+            MemoryStream stream = new MemoryStream(buffer);
+            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Read);
+            byte[] buffer5 = new byte[buffer.Length];
+            int count = stream2.Read(buffer5, 0, buffer5.Length);
+            stream.Close();
+            stream2.Close();
+            return Encoding.UTF8.GetString(buffer5, 0, count);
+        }
+
+        private void UserControlEncrypDecryp_NadiaDecryption_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Decryption Should go here");
+
+        }
+
+        private void UserControlEncrypDecryp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserControlEncrypDecryp_NadiaEncryption_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Encryption Should go here");
+        }
     }
 }

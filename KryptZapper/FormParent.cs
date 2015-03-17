@@ -22,32 +22,12 @@ namespace KryptZapper
     {
 
         Form thisChild;
+        bool isDefaultSet;
+        string defaultEmailMethod;
 
         public FormParent()
         {
             InitializeComponent();
-            toggleToolsAvailability("off");
-        }
-
-        /// <summary>
-        /// changes the availability of the tools controls depending
-        /// on if forms are open
-        /// </summary>
-        /// <param name="setting"></param>
-        public void toggleToolsAvailability(String setting)
-        {
-            if (setting == "off")
-            {
-                toolStripEmailButton.Enabled = false;
-                toolStripEncryptButton.Enabled = false;
-                toolStripDecryptButton.Enabled = false;
-            }
-            else
-            {
-                toolStripEmailButton.Enabled = true;
-                toolStripEncryptButton.Enabled = true;
-                toolStripDecryptButton.Enabled = true;
-            }
         }
         /// <summary>
         /// shows about dialog box that will outline krytzapper
@@ -70,9 +50,7 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormChild child = new FormChild(this); //make a FormChild
-           
-            toggleToolsAvailability("on");
+            FormChild child = new FormChild(); //make a FormChild
             child.MdiParent = this;
             child.Show(); //show the child
         }
@@ -90,8 +68,7 @@ namespace KryptZapper
                 String filename = openFileDialogParent.FileName;
                 MessageBox.Show(filename);
                 string text = System.IO.File.ReadAllText(filename);
-                FormChild child = new FormChild(filename, text, this); //filename is the path
-                toggleToolsAvailability("on");
+                FormChild child = new FormChild(filename, text); //filename is the path
                 child.MdiParent = this;
                 child.Text = filename;
                 child.Show(); //show the child    
@@ -189,6 +166,7 @@ namespace KryptZapper
             Application.Exit();
         }
 
+        string Encrypted;
 
         /// <summary>
         /// encrypts the text in the current MDI chiild form
@@ -197,15 +175,10 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void encrypt_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Encrypting document");
             thisChild = this.ActiveMdiChild;
-            if (thisChild != null)
-            {
-                MessageBox.Show("Encrypting document");
-                thisChild = this.ActiveMdiChild;
-                FormChild child = (FormChild)thisChild;
-                child.EncryptChild();
-            }
-
+            FormChild child = (FormChild)thisChild;
+            child.EncryptChild();
         }
 
         /// <summary>
@@ -215,30 +188,31 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void decrypt_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Decrypting document");
             thisChild = this.ActiveMdiChild;
-            if (thisChild != null)
-            {
-                MessageBox.Show("Decrypting document");
-            }
-
-
+            FormChild child = (FormChild)thisChild;
+            child.DecryptChild();
         }
 
         /// <summary>
-        /// will email an encrypted message
+        /// will email an encrypted message...for now it prints a message
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void email_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Emailing document");
             thisChild = this.ActiveMdiChild;
-            if (thisChild != null)
+            FormChild child = (FormChild)thisChild;
+            try
             {
-                MessageBox.Show("Emailing document");
-                thisChild = this.ActiveMdiChild;
-                FormChild child = (FormChild)thisChild;
                 child.EmailChild();
             }
+            catch(NullReferenceException nre)
+            {
+                Console.WriteLine("An exception is caught", nre);
+            }
+            
         }
 
         /// <summary>
@@ -252,7 +226,7 @@ namespace KryptZapper
         }
 
         /// <summary>
-        /// handles closing for the form
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -271,17 +245,13 @@ namespace KryptZapper
 
         }
 
-        /// <summary>
-        /// checks if the user is closing the last childform
-        /// to decide whether they should be allowed to use the controls after that close
-        /// </summary>
-        public void updateControls()
+        private void setUpAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MdiChildren.Length == 0)
+            AccountSetUpDialog setupPage = new AccountSetUpDialog();
+            if (setupPage.ShowDialog() == DialogResult.OK)
             {
-                toggleToolsAvailability("off");
+                MessageBox.Show("Submit worked");
             }
         }
-
     }
 }
