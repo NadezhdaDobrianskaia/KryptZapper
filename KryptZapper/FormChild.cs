@@ -14,6 +14,9 @@ namespace KryptZapper
 {
     public partial class FormChild : Form
     {
+        //reference for it's parent
+        private FormParent formParent;
+
         string ext = null; //added for the saveAs
         string justSave = null; //added for the saveAs
 
@@ -26,15 +29,26 @@ namespace KryptZapper
         int keySize = 256;                // can be 192 or 128
         //---end for Encryption
 
-
-        public FormChild()
+        /// <summary>
+        /// constructor passes in it's parents reference
+        /// </summary>
+        /// <param name="f"></param>
+        public FormChild(FormParent f)
         {
             InitializeComponent();
+            formParent = f;
         }
 
-        public FormChild(string path, string file)     //constructor
+        /// <summary>
+        /// constructor2 if opened via a file, passed in the parents ref
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="file"></param>
+        /// <param name="f"></param>
+        public FormChild(string path, string file, FormParent f)     //constructor
         {
             InitializeComponent();
+            formParent = f;
             richTextBox1.Text = file;
             MessageBox.Show("I opened a file");
             justSave = path;
@@ -94,6 +108,7 @@ namespace KryptZapper
             else
                 save();
             this.Dispose();
+            formParent.updateControls();
         }
 
         /// <summary>
@@ -111,6 +126,7 @@ namespace KryptZapper
             else
             {
                 this.Dispose();
+                formParent.updateControls();
             }
         }
 
@@ -126,6 +142,9 @@ namespace KryptZapper
             richTextBox1.Text = MyEncryptedText;
         }
 
+        /// <summary>
+        /// begins an email with the message body the text in the form
+        /// </summary>
         public void EmailChild()
         {
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
@@ -158,5 +177,6 @@ namespace KryptZapper
             stream2.Close();
             return Convert.ToBase64String(inArray);
         }
+
     }
 }
