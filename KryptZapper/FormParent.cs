@@ -242,18 +242,31 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void email_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Emailing document");
-            thisChild = this.ActiveMdiChild;
-            FormChild child = (FormChild)thisChild;
+            EmailMethodChooseDialog methodChoose = new EmailMethodChooseDialog();
+            if(methodChoose.ShowDialog() == DialogResult.OK)
+            {
+                if(methodChoose.Selection == "local")
+                {
+                    thisChild = this.ActiveMdiChild;
+                    FormChild child = (FormChild)thisChild;
 
-            try
-            {
-                child.EmailChild();
+                    try
+                    {
+                        child.EmailChild();
+                    }
+                    catch (NullReferenceException nre)
+                    {
+                        Console.WriteLine("An exception is caught", nre);
+                    }
+                }
+                else
+                {
+                    
+                }
             }
-            catch (NullReferenceException nre)
-            {
-                Console.WriteLine("An exception is caught", nre);
-            }
+
+            
+
 
         }
 

@@ -36,12 +36,14 @@
             this.methodLabel = new System.Windows.Forms.Label();
             this.setupQuestionLabel = new System.Windows.Forms.Label();
             this.linkToSetup = new System.Windows.Forms.LinkLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // localEmailClientRadio
             // 
             this.localEmailClientRadio.AutoSize = true;
-            this.localEmailClientRadio.Location = new System.Drawing.Point(45, 60);
+            this.localEmailClientRadio.Location = new System.Drawing.Point(22, 28);
             this.localEmailClientRadio.Name = "localEmailClientRadio";
             this.localEmailClientRadio.Size = new System.Drawing.Size(156, 17);
             this.localEmailClientRadio.TabIndex = 0;
@@ -52,7 +54,7 @@
             // smtpRadio
             // 
             this.smtpRadio.AutoSize = true;
-            this.smtpRadio.Location = new System.Drawing.Point(45, 104);
+            this.smtpRadio.Location = new System.Drawing.Point(22, 64);
             this.smtpRadio.Name = "smtpRadio";
             this.smtpRadio.Size = new System.Drawing.Size(172, 17);
             this.smtpRadio.TabIndex = 1;
@@ -62,7 +64,8 @@
             // 
             // methodOkayButton
             // 
-            this.methodOkayButton.Location = new System.Drawing.Point(78, 189);
+            this.methodOkayButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.methodOkayButton.Location = new System.Drawing.Point(77, 196);
             this.methodOkayButton.Name = "methodOkayButton";
             this.methodOkayButton.Size = new System.Drawing.Size(75, 23);
             this.methodOkayButton.TabIndex = 2;
@@ -71,7 +74,7 @@
             // 
             // methodCancelButton
             // 
-            this.methodCancelButton.Location = new System.Drawing.Point(187, 189);
+            this.methodCancelButton.Location = new System.Drawing.Point(186, 196);
             this.methodCancelButton.Name = "methodCancelButton";
             this.methodCancelButton.Size = new System.Drawing.Size(75, 23);
             this.methodCancelButton.TabIndex = 3;
@@ -81,7 +84,7 @@
             // setAsDefaultCheckbox
             // 
             this.setAsDefaultCheckbox.AutoSize = true;
-            this.setAsDefaultCheckbox.Location = new System.Drawing.Point(12, 247);
+            this.setAsDefaultCheckbox.Location = new System.Drawing.Point(21, 250);
             this.setAsDefaultCheckbox.Name = "setAsDefaultCheckbox";
             this.setAsDefaultCheckbox.Size = new System.Drawing.Size(291, 17);
             this.setAsDefaultCheckbox.TabIndex = 4;
@@ -101,7 +104,7 @@
             // 
             this.setupQuestionLabel.AutoSize = true;
             this.setupQuestionLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.setupQuestionLabel.Location = new System.Drawing.Point(63, 138);
+            this.setupQuestionLabel.Location = new System.Drawing.Point(40, 93);
             this.setupQuestionLabel.Name = "setupQuestionLabel";
             this.setupQuestionLabel.Size = new System.Drawing.Size(217, 13);
             this.setupQuestionLabel.TabIndex = 6;
@@ -110,28 +113,41 @@
             // linkToSetup
             // 
             this.linkToSetup.AutoSize = true;
-            this.linkToSetup.Location = new System.Drawing.Point(275, 138);
+            this.linkToSetup.Location = new System.Drawing.Point(252, 93);
             this.linkToSetup.Name = "linkToSetup";
             this.linkToSetup.Size = new System.Drawing.Size(31, 13);
             this.linkToSetup.TabIndex = 7;
             this.linkToSetup.TabStop = true;
             this.linkToSetup.Text = "here.";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.localEmailClientRadio);
+            this.groupBox1.Controls.Add(this.linkToSetup);
+            this.groupBox1.Controls.Add(this.smtpRadio);
+            this.groupBox1.Controls.Add(this.setupQuestionLabel);
+            this.groupBox1.Location = new System.Drawing.Point(21, 49);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(303, 124);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
             // EmailMethodChooseDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 276);
-            this.Controls.Add(this.linkToSetup);
-            this.Controls.Add(this.setupQuestionLabel);
+            this.ClientSize = new System.Drawing.Size(356, 281);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.methodLabel);
             this.Controls.Add(this.setAsDefaultCheckbox);
             this.Controls.Add(this.methodCancelButton);
             this.Controls.Add(this.methodOkayButton);
-            this.Controls.Add(this.smtpRadio);
-            this.Controls.Add(this.localEmailClientRadio);
             this.Name = "EmailMethodChooseDialog";
             this.Text = "Email Method";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +163,6 @@
         private System.Windows.Forms.Label methodLabel;
         private System.Windows.Forms.Label setupQuestionLabel;
         private System.Windows.Forms.LinkLabel linkToSetup;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

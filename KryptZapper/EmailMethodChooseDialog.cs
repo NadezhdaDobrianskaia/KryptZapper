@@ -12,9 +12,32 @@ namespace KryptZapper
 {
     public partial class EmailMethodChooseDialog : Form
     {
+        private string radioSelect;
+
         public EmailMethodChooseDialog()
         {
             InitializeComponent();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        public string Selection
+        {
+            get
+            {
+                if(localEmailClientRadio.Checked)
+                {
+                    return "local";
+                }
+                else
+                {
+                    return "account";
+                }
+            }
+        }
+
     }
 }
