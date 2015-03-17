@@ -28,7 +28,31 @@ namespace KryptZapper
         public FormParent()
         {
             InitializeComponent();
+            toggleToolsAvailability("off");
         }
+
+
+        /// <summary>
+        /// changes the availability of the tools controls depending
+        /// on if forms are open
+        /// </summary>
+        /// <param name="setting"></param>
+        public void toggleToolsAvailability(String setting)
+        {
+            if (setting == "off")
+            {
+                toolStripEmailButton.Enabled = false;
+                toolStripEncryptButton.Enabled = false;
+                toolStripDecryptButton.Enabled = false;
+            }
+            else
+            {
+                toolStripEmailButton.Enabled = true;
+                toolStripEncryptButton.Enabled = true;
+                toolStripDecryptButton.Enabled = true;
+            }
+        }
+
         /// <summary>
         /// shows about dialog box that will outline krytzapper
         /// </summary>
@@ -50,7 +74,9 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormChild child = new FormChild(); //make a FormChild
+            FormChild child = new FormChild(this); //make a FormChild
+
+            toggleToolsAvailability("on");
             child.MdiParent = this;
             child.Show(); //show the child
         }
@@ -68,7 +94,8 @@ namespace KryptZapper
                 String filename = openFileDialogParent.FileName;
                 MessageBox.Show(filename);
                 string text = System.IO.File.ReadAllText(filename);
-                FormChild child = new FormChild(filename, text); //filename is the path
+                FormChild child = new FormChild(filename, text, this); //filename is the path
+                toggleToolsAvailability("on");
                 child.MdiParent = this;
                 child.Text = filename;
                 child.Show(); //show the child    
@@ -162,7 +189,7 @@ namespace KryptZapper
                 }
                 thisChild = this.ActiveMdiChild;
             }
-            
+
             Application.Exit();
         }
 
@@ -178,7 +205,14 @@ namespace KryptZapper
             MessageBox.Show("Encrypting document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
-            child.EncryptChild();
+            try
+            {
+                child.EncryptChild();
+            }
+            catch (NullReferenceException nre)
+            {
+                Console.WriteLine("An exception is caught", nre);
+            }
         }
 
         /// <summary>
@@ -191,7 +225,14 @@ namespace KryptZapper
             MessageBox.Show("Decrypting document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
-            child.DecryptChild();
+            try
+            {
+                child.DecryptChild();
+            }
+            catch (NullReferenceException nre)
+            {
+                Console.WriteLine("An exception is caught", nre);
+            }
         }
 
         /// <summary>
@@ -204,15 +245,16 @@ namespace KryptZapper
             MessageBox.Show("Emailing document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
+
             try
             {
                 child.EmailChild();
             }
-            catch(NullReferenceException nre)
+            catch (NullReferenceException nre)
             {
                 Console.WriteLine("An exception is caught", nre);
             }
-            
+
         }
 
         /// <summary>
@@ -251,6 +293,18 @@ namespace KryptZapper
             if (setupPage.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Submit worked");
+            }
+        }
+
+        /// <summary>
+        /// checks if the user is closing the last childform
+        /// to decide whether they should be allowed to use the controls after that close
+        /// </summary>
+        public void updateControls()
+        {
+            if (MdiChildren.Length == 0)
+            {
+                toggleToolsAvailability("off");
             }
         }
     }

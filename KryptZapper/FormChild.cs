@@ -16,6 +16,9 @@ namespace KryptZapper
 {
     public partial class FormChild : Form
     {
+        //reference for it's parent
+        private FormParent formParent;
+
         string ext = null; //added for the saveAs
         string justSave = null; //added for the saveAs
 
@@ -32,14 +35,16 @@ namespace KryptZapper
         //---end for Encryption
 
 
-        public FormChild()
+        public FormChild(FormParent f)
         {
             InitializeComponent();
+            formParent = f;
         }
 
-        public FormChild(string path, string file)     //constructor
+        public FormChild(string path, string file, FormParent f)     //constructor
         {
             InitializeComponent();
+            formParent = f;
             richTextBox1.Text = file;
             MessageBox.Show("I opened a file");
             justSave = path;
@@ -54,7 +59,7 @@ namespace KryptZapper
             SaveFileDialog saveText = new SaveFileDialog();
             saveText.Filter = "Text Files | *.txt";
             string text = richTextBox1.Text;
-            
+
             if (saveText.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 System.IO.Stream fileStream = saveText.OpenFile();
@@ -72,7 +77,6 @@ namespace KryptZapper
         /// otherwise call saveAs.
         /// </summary>
         public void save()
-
         {
             string text = richTextBox1.Text;
             MessageBox.Show("SaveWasPressed");
@@ -99,6 +103,7 @@ namespace KryptZapper
             else
                 save();
             this.Dispose();
+            formParent.updateControls();
         }
 
         /// <summary>
@@ -116,6 +121,7 @@ namespace KryptZapper
             else
             {
                 this.Dispose();
+                formParent.updateControls();
             }
         }
 
@@ -145,7 +151,7 @@ namespace KryptZapper
         /// <returns></returns>
         private string Encrypt(string data)
         {
-            MessageBox.Show("Trying to Encrypt");    
+            MessageBox.Show("Trying to Encrypt");
             byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
             byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
             byte[] buffer = Encoding.UTF8.GetBytes(data);
@@ -202,17 +208,5 @@ namespace KryptZapper
         {
             MessageBox.Show("Encryption Should go here");
         }
-
-        private void nadiaUserControl1_NadiaDecryption_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Decryption here");
-        }
-
-        private void nadiaUserControl1_NadiaEncryption_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Eecryption here");
-        }
-
-
     }
 }
