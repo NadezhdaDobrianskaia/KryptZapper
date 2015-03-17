@@ -56,10 +56,10 @@
             this.smtpRadio.AutoSize = true;
             this.smtpRadio.Location = new System.Drawing.Point(22, 64);
             this.smtpRadio.Name = "smtpRadio";
-            this.smtpRadio.Size = new System.Drawing.Size(172, 17);
+            this.smtpRadio.Size = new System.Drawing.Size(195, 17);
             this.smtpRadio.TabIndex = 1;
             this.smtpRadio.TabStop = true;
-            this.smtpRadio.Text = "using configured email account";
+            this.smtpRadio.Text = "using your configured email account";
             this.smtpRadio.UseVisualStyleBackColor = true;
             // 
             // methodOkayButton
@@ -133,7 +133,6 @@
             this.groupBox1.Size = new System.Drawing.Size(303, 124);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // EmailMethodChooseDialog
             // 
