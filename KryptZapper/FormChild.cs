@@ -181,7 +181,10 @@ namespace KryptZapper
                     
                 }
             }
-
+            else
+            {
+                chooseMethod.Close();
+            }
 
 
         }

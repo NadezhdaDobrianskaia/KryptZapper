@@ -39,5 +39,11 @@ namespace KryptZapper
             }
         }
 
+        private void linkToSetup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AccountSetUpDialog setup = new AccountSetUpDialog();
+            setup.ShowDialog();
+        }
+
     }
 }

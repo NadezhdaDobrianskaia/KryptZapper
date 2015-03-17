@@ -74,6 +74,7 @@
             // 
             // methodCancelButton
             // 
+            this.methodCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.methodCancelButton.Location = new System.Drawing.Point(186, 196);
             this.methodCancelButton.Name = "methodCancelButton";
             this.methodCancelButton.Size = new System.Drawing.Size(75, 23);
@@ -119,6 +120,7 @@
             this.linkToSetup.TabIndex = 7;
             this.linkToSetup.TabStop = true;
             this.linkToSetup.Text = "here.";
+            this.linkToSetup.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkToSetup_LinkClicked);
             // 
             // groupBox1
             // 
