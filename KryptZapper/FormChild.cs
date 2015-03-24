@@ -162,7 +162,11 @@ namespace KryptZapper
                     if(isEmailSetup == false)
                     {
                         AccountSetUpDialog accountSet = new AccountSetUpDialog();
-                        accountSet.ShowDialog();
+                        if( accountSet.ShowDialog() == DialogResult.Cancel )
+                        {
+                            accountSet.Close();
+                        }
+                        
                     }
                     else if (isEmailSetup == true)
                     {

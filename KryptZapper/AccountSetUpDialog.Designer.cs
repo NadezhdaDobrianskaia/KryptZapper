@@ -67,6 +67,7 @@
             // 
             // setupOKButton
             // 
+            this.setupOKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.setupOKButton.Location = new System.Drawing.Point(81, 157);
             this.setupOKButton.Name = "setupOKButton";
             this.setupOKButton.Size = new System.Drawing.Size(75, 23);
@@ -97,6 +98,7 @@
             // 
             // setupCancelButton
             // 
+            this.setupCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.setupCancelButton.Location = new System.Drawing.Point(190, 157);
             this.setupCancelButton.Name = "setupCancelButton";
             this.setupCancelButton.Size = new System.Drawing.Size(75, 23);
