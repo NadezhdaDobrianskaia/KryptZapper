@@ -21,7 +21,8 @@ namespace KryptZapper
         //reference for it's parent
         private FormParent formParent;
 
-        string ext = null; //added for the saveAs
+        SaveFileDialog saveText = new SaveFileDialog();
+
         string justSave = null; //added for the saveAs
 
         //*****DESCryptoServiceProvider is based on a symmetric encryption algorithm.  
@@ -44,6 +45,7 @@ namespace KryptZapper
         {
             InitializeComponent();
             formParent = f;
+            saveText.Filter = "Text Files | *.txt";
         }
 
         public FormChild(string path, string file, FormParent f)     //constructor
@@ -61,8 +63,6 @@ namespace KryptZapper
         /// </summary>
         public void saveAs()
         {
-            SaveFileDialog saveText = new SaveFileDialog();
-            saveText.Filter = "Text Files | *.txt";
             string text = richTextBox1.Text;
 
             if (saveText.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -153,7 +153,7 @@ namespace KryptZapper
                     System.Diagnostics.Process proc = new System.Diagnostics.Process();
                     proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
                     proc.Start();
-                }
+                } 
                 else
                 {
                     EmailDialog emailSet = new EmailDialog();
@@ -193,6 +193,7 @@ namespace KryptZapper
         /// <returns></returns>
         private string Encrypt(string data)
         {
+            saveText.Filter = "Krypt-Zapper Files | *.kpz";
             MessageBox.Show("Trying to Encrypt");
             byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
             byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
@@ -219,6 +220,7 @@ namespace KryptZapper
         }
         private string Decrypt(string data)
         {
+            saveText.Filter = "Text Files | *.txt";
             byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
             byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
             byte[] buffer = Convert.FromBase64String(data);
