@@ -22,8 +22,8 @@ namespace KryptZapper
     {
 
         Form thisChild;
-        bool isDefaultSet;
-        string defaultEmailMethod;
+        bool isDefaultSet = false;
+        string defaultEmailMethod = null;
 
         public FormParent()
         {
@@ -308,5 +308,6 @@ namespace KryptZapper
                 toggleToolsAvailability("off");
             }
         }
+
     }
 }

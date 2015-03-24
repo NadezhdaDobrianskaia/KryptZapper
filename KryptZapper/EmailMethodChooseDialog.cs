@@ -19,11 +19,6 @@ namespace KryptZapper
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         public string Selection
         {
             get
@@ -37,6 +32,12 @@ namespace KryptZapper
                     return "account";
                 }
             }
+        }
+
+        private void linkToSetup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AccountSetUpDialog setup = new AccountSetUpDialog();
+            setup.ShowDialog();
         }
 
     }

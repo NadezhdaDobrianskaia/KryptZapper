@@ -53,7 +53,7 @@
             // emailSendButton
             // 
             this.emailSendButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.emailSendButton.Location = new System.Drawing.Point(151, 81);
+            this.emailSendButton.Location = new System.Drawing.Point(152, 81);
             this.emailSendButton.Name = "emailSendButton";
             this.emailSendButton.Size = new System.Drawing.Size(75, 23);
             this.emailSendButton.TabIndex = 3;
@@ -62,6 +62,7 @@
             // 
             // emailCanelButton
             // 
+            this.emailCanelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.emailCanelButton.Location = new System.Drawing.Point(277, 81);
             this.emailCanelButton.Name = "emailCanelButton";
             this.emailCanelButton.Size = new System.Drawing.Size(75, 23);
