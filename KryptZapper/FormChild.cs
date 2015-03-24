@@ -21,6 +21,9 @@ namespace KryptZapper
         //reference for it's parent
         private FormParent formParent;
 
+        // flag to check if user email account is set
+        bool isEmailSetup = false;
+
         string ext = null; //added for the saveAs
         string justSave = null; //added for the saveAs
 
@@ -156,32 +159,48 @@ namespace KryptZapper
                 }
                 else
                 {
-                    EmailDialog emailSet = new EmailDialog();
-                    if(emailSet.ShowDialog() == DialogResult.OK)
+                    if(isEmailSetup == false)
                     {
-                        var smtp = new SmtpClient
+                        AccountSetUpDialog accountSet = new AccountSetUpDialog();
+                        if( accountSet.ShowDialog() == DialogResult.Cancel )
                         {
-                            Host = "smtp.gmail.com",
-                            Port = 587,
-                            EnableSsl = true,
-                            DeliveryMethod = SmtpDeliveryMethod.Network,
-                            UseDefaultCredentials = false,
-                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                        };
-                        using (var message = new MailMessage(fromAddress, toAddress)
+                            accountSet.Close();
+                        }
+                        
+                    }
+                    else if (isEmailSetup == true)
+                    {
+                        EmailDialog emailSet = new EmailDialog();
+                        if (emailSet.ShowDialog() == DialogResult.OK)
                         {
-                            Subject = "Krypt-Zapper Message",
-                            Body = richTextBox1.Text
-                        })
-                        {
-                            smtp.Send(message);
+                            var smtp = new SmtpClient
+                            {
+                                Host = "smtp.gmail.com",
+                                Port = 587,
+                                EnableSsl = true,
+                                DeliveryMethod = SmtpDeliveryMethod.Network,
+                                UseDefaultCredentials = false,
+                                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                            };
+                            using (var message = new MailMessage(fromAddress, toAddress)
+                            {
+                                Subject = "Krypt-Zapper Message",
+                                Body = richTextBox1.Text
+                            })
+                            {
+                                smtp.Send(message);
+                            }
                         }
 
                     }
+
                     
                 }
             }
-
+            else
+            {
+                chooseMethod.Close();
+            }
 
 
         }
