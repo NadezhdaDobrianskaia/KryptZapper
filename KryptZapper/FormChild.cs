@@ -26,7 +26,7 @@ namespace KryptZapper
         private static string _publicKey;
         private static UnicodeEncoding _encoder = new UnicodeEncoding();
         
-        //-------------------end RSA values
+        //-------------------end RSA fields
 
 
         //reference for it's parent
@@ -37,11 +37,6 @@ namespace KryptZapper
 
         string ext = null; //added for the saveAs
         string justSave = null;  //added for the saveAs
-
-        
-
-        
-
 
         MailAddress fromAddress = new MailAddress("KryptZapper@gmail.com", "From Name");
         MailAddress toAddress = new MailAddress("KryptZapper@gmail.com", "To Name");
@@ -139,15 +134,7 @@ namespace KryptZapper
 
         
 
-        /// <summary>
-        /// grabs text from MDI child and stores it in a string
-        /// </summary>
-        public void EncryptChild()
-        {
-            string text = richTextBox1.Text;
-            MyEncryptedText = Encrypt(text);
-            richTextBox1.Text = MyEncryptedText;
-        }
+
 
         public void EmailChild()
         {
@@ -235,6 +222,16 @@ namespace KryptZapper
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// grabs text from MDI child and stores it in a string
+        /// </summary>
+        public void EncryptChild()
+        {
+            string text = richTextBox1.Text;
+            MyEncryptedText = Encrypt(text);
+            richTextBox1.Text = MyEncryptedText;
         }
 
         public void DecryptChild()
