@@ -264,6 +264,7 @@ namespace KryptZapper
         private void nadiaUserControl1_NadiaDecryption_Click(object sender, EventArgs e)
         {
             //DecryptChild();
+            _privateKey = nadiaUserControl1.PrivateKey;
             string text = richTextBox1.Text;
             MyEncryptedText = Decrypt(text);
             richTextBox1.Text = MyEncryptedText;
@@ -272,7 +273,7 @@ namespace KryptZapper
         private void nadiaUserControl1_NadiaEncryption_Click(object sender, EventArgs e)
         {
             
-            _privateKey = nadiaUserControl1.PrivateKey;
+           // _privateKey = nadiaUserControl1.PrivateKey;
             _publicKey = nadiaUserControl1.PublicKey;
             string text = richTextBox1.Text;
             MessageBox.Show("RSA // Text to encrypt: " + text);
