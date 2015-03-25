@@ -18,6 +18,17 @@ namespace KryptZapper
 {
     public partial class FormChild : Form
     {
+
+        //---------------------RSA fields
+        private RSACryptoServiceProvider rsa;
+        String MyEncryptedText = "";
+        private static string _privateKey;
+        private static string _publicKey;
+        private static UnicodeEncoding _encoder = new UnicodeEncoding();
+        
+        //-------------------end RSA values
+
+
         //reference for it's parent
         private FormParent formParent;
 
@@ -25,19 +36,12 @@ namespace KryptZapper
         bool isEmailSetup = false;
 
         string ext = null; //added for the saveAs
-        string justSave = null; //added for the saveAs
+        string justSave = null;  //added for the saveAs
 
-        //*****DESCryptoServiceProvider is based on a symmetric encryption algorithm.  
-        //*****Symmetric encryption requires a key and an initialization vector(IV) to encrypt the data
-        //*****To decrypt the data you must use the same key and save IV.
-        //For Encryption
-        string passPhrase = "Pasword";        // can be any string
-        string saltValue = "sALtValue";        // can be any string
-        string hashAlgorithm = "SHA1";             // can be "MD5"
-        int passwordIterations = 7;                  // can be any number
-        string initVector = "~1B2c3D4e5F6g7H8"; // must be 16 bytes
-        int keySize = 256;                // can be 192 or 128
-        //---end for Encryption
+        
+
+        
+
 
         MailAddress fromAddress = new MailAddress("KryptZapper@gmail.com", "From Name");
         MailAddress toAddress = new MailAddress("KryptZapper@gmail.com", "To Name");
@@ -133,7 +137,7 @@ namespace KryptZapper
             }
         }
 
-        String MyEncryptedText;
+        
 
         /// <summary>
         /// grabs text from MDI child and stores it in a string
@@ -205,6 +209,8 @@ namespace KryptZapper
 
         }
 
+
+///////--------------------------RSA Encryption / Decryption
         /// <summary>
         /// encrypts messages
         /// </summary>
@@ -212,22 +218,23 @@ namespace KryptZapper
         /// <returns></returns>
         private string Encrypt(string data)
         {
-            MessageBox.Show("Trying to Encrypt");
-            byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
-            byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
-            byte[] buffer = Encoding.UTF8.GetBytes(data);
-            byte[] rgbKey = new PasswordDeriveBytes(this.passPhrase, rgbSalt, this.hashAlgorithm, this.passwordIterations).GetBytes(this.keySize / 8);
-            RijndaelManaged managed = new RijndaelManaged();
-            managed.Mode = CipherMode.CBC;
-            ICryptoTransform transform = managed.CreateEncryptor(rgbKey, bytes);
-            MemoryStream stream = new MemoryStream();
-            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Write); //CryptoStream class is designed to encrypt or to decrypt content as it is streamed out to a file
-            stream2.Write(buffer, 0, buffer.Length);
-            stream2.FlushFinalBlock();
-            byte[] inArray = stream.ToArray();
-            stream.Close();
-            stream2.Close();
-            return Convert.ToBase64String(inArray);
+            var rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlString(_publicKey);
+            var dataToEncrypt = _encoder.GetBytes(data);
+            var encryptedByteArray = rsa.Encrypt(dataToEncrypt, false).ToArray();
+            var length = encryptedByteArray.Count();
+            var item = 0;
+            var sb = new StringBuilder();
+            foreach (var x in encryptedByteArray)
+            {
+                item++;
+                sb.Append(x);
+
+                if (item < length)
+                    sb.Append(",");
+            }
+
+            return sb.ToString();
         }
 
         public void DecryptChild()
@@ -238,46 +245,37 @@ namespace KryptZapper
         }
         private string Decrypt(string data)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes(this.initVector);
-            byte[] rgbSalt = Encoding.ASCII.GetBytes(this.saltValue);
-            byte[] buffer = Convert.FromBase64String(data);
-            byte[] rgbKey = new PasswordDeriveBytes(this.passPhrase, rgbSalt, this.hashAlgorithm, this.passwordIterations).GetBytes(this.keySize / 8);
-            RijndaelManaged managed = new RijndaelManaged();
-            managed.Mode = CipherMode.CBC;
-            ICryptoTransform transform = managed.CreateDecryptor(rgbKey, bytes);
-            MemoryStream stream = new MemoryStream(buffer);
-            CryptoStream stream2 = new CryptoStream(stream, transform, CryptoStreamMode.Read);
-            byte[] buffer5 = new byte[buffer.Length];
-            int count = stream2.Read(buffer5, 0, buffer5.Length);
-            stream.Close();
-            stream2.Close();
-            return Encoding.UTF8.GetString(buffer5, 0, count);
-        }
+            var rsa = new RSACryptoServiceProvider();
+            var dataArray = data.Split(new char[] { ',' });
+            byte[] dataByte = new byte[dataArray.Length];
+            for (int i = 0; i < dataArray.Length; i++)
+            {
+                dataByte[i] = Convert.ToByte(dataArray[i]);
+            }
 
-        private void UserControlEncrypDecryp_NadiaDecryption_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Decryption Should go here");
-
-        }
-
-        private void UserControlEncrypDecryp_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserControlEncrypDecryp_NadiaEncryption_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Encryption Should go here");
+            rsa.FromXmlString(_privateKey);
+            var decryptedByte = rsa.Decrypt(dataByte, false);
+            return _encoder.GetString(decryptedByte);
         }
 
         private void nadiaUserControl1_NadiaDecryption_Click(object sender, EventArgs e)
         {
-            DecryptChild();
+            //DecryptChild();
+            string text = richTextBox1.Text;
+            MyEncryptedText = Decrypt(text);
+            richTextBox1.Text = MyEncryptedText;
         }
 
         private void nadiaUserControl1_NadiaEncryption_Click(object sender, EventArgs e)
         {
-            EncryptChild();
+             _privateKey = nadiaUserControl1.PrivateKey;
+             _publicKey = nadiaUserControl1.PublicKey;
+            string text = richTextBox1.Text;
+            MessageBox.Show("RSA // Text to encrypt: " + text);
+            MyEncryptedText = Encrypt(text);
+            richTextBox1.Text = MyEncryptedText;
+
         }
+//--------------------------------------end RSA Encryptiion /Decryption
     }
 }
