@@ -207,7 +207,7 @@ namespace KryptZapper
             FormChild child = (FormChild)thisChild;
             try
             {
-                child.EncryptChild();
+                child.EncryptChild(sender, e);
             }
             catch (NullReferenceException nre)
             {
@@ -227,7 +227,7 @@ namespace KryptZapper
             FormChild child = (FormChild)thisChild;
             try
             {
-                child.DecryptChild();
+                child.DecryptChild(sender, e);
             }
             catch (NullReferenceException nre)
             {

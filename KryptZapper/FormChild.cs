@@ -227,18 +227,24 @@ namespace KryptZapper
         /// <summary>
         /// grabs text from MDI child and stores it in a string
         /// </summary>
-        public void EncryptChild()
+        public void EncryptChild(object sender, EventArgs e)
         {
-            string text = richTextBox1.Text;
+
+            if(nadiaUserControl1.ButtonEncryptedClick)
+                nadiaUserControl1_NadiaEncryption_Click(sender, e);
+           /* string text = richTextBox1.Text;
             MyEncryptedText = Encrypt(text);
-            richTextBox1.Text = MyEncryptedText;
+            richTextBox1.Text = MyEncryptedText;*/
         }
 
-        public void DecryptChild()
+        public void DecryptChild(object sender, EventArgs e)
         {
-            string text = richTextBox1.Text;
+            if(nadiaUserControl1.ButtonDecryptedClick)
+                nadiaUserControl1_NadiaDecryption_Click(sender, e);
+            /*string text = richTextBox1.Text;
             MyEncryptedText = Decrypt(text);
             richTextBox1.Text = MyEncryptedText;
+            */
         }
         private string Decrypt(string data)
         {
@@ -265,8 +271,9 @@ namespace KryptZapper
 
         private void nadiaUserControl1_NadiaEncryption_Click(object sender, EventArgs e)
         {
-             _privateKey = nadiaUserControl1.PrivateKey;
-             _publicKey = nadiaUserControl1.PublicKey;
+            
+            _privateKey = nadiaUserControl1.PrivateKey;
+            _publicKey = nadiaUserControl1.PublicKey;
             string text = richTextBox1.Text;
             MessageBox.Show("RSA // Text to encrypt: " + text);
             MyEncryptedText = Encrypt(text);
