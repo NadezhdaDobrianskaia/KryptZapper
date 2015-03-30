@@ -22,8 +22,6 @@ namespace KryptZapper
     {
 
         Form thisChild;
-        bool isDefaultSet = false;
-        string defaultEmailMethod = null;
 
         public FormParent()
         {
