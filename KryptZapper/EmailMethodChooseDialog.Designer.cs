@@ -43,7 +43,7 @@
             // localEmailClientRadio
             // 
             this.localEmailClientRadio.AutoSize = true;
-            this.localEmailClientRadio.Location = new System.Drawing.Point(22, 28);
+            this.localEmailClientRadio.Location = new System.Drawing.Point(49, 29);
             this.localEmailClientRadio.Name = "localEmailClientRadio";
             this.localEmailClientRadio.Size = new System.Drawing.Size(156, 17);
             this.localEmailClientRadio.TabIndex = 0;
@@ -54,7 +54,7 @@
             // smtpRadio
             // 
             this.smtpRadio.AutoSize = true;
-            this.smtpRadio.Location = new System.Drawing.Point(22, 64);
+            this.smtpRadio.Location = new System.Drawing.Point(49, 65);
             this.smtpRadio.Name = "smtpRadio";
             this.smtpRadio.Size = new System.Drawing.Size(195, 17);
             this.smtpRadio.TabIndex = 1;
@@ -65,7 +65,7 @@
             // methodOkayButton
             // 
             this.methodOkayButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.methodOkayButton.Location = new System.Drawing.Point(77, 196);
+            this.methodOkayButton.Location = new System.Drawing.Point(99, 246);
             this.methodOkayButton.Name = "methodOkayButton";
             this.methodOkayButton.Size = new System.Drawing.Size(75, 23);
             this.methodOkayButton.TabIndex = 2;
@@ -75,7 +75,7 @@
             // methodCancelButton
             // 
             this.methodCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.methodCancelButton.Location = new System.Drawing.Point(186, 196);
+            this.methodCancelButton.Location = new System.Drawing.Point(210, 246);
             this.methodCancelButton.Name = "methodCancelButton";
             this.methodCancelButton.Size = new System.Drawing.Size(75, 23);
             this.methodCancelButton.TabIndex = 3;
@@ -85,7 +85,7 @@
             // setAsDefaultCheckbox
             // 
             this.setAsDefaultCheckbox.AutoSize = true;
-            this.setAsDefaultCheckbox.Location = new System.Drawing.Point(21, 250);
+            this.setAsDefaultCheckbox.Location = new System.Drawing.Point(25, 134);
             this.setAsDefaultCheckbox.Name = "setAsDefaultCheckbox";
             this.setAsDefaultCheckbox.Size = new System.Drawing.Size(291, 17);
             this.setAsDefaultCheckbox.TabIndex = 4;
@@ -105,7 +105,7 @@
             // 
             this.setupQuestionLabel.AutoSize = true;
             this.setupQuestionLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.setupQuestionLabel.Location = new System.Drawing.Point(40, 93);
+            this.setupQuestionLabel.Location = new System.Drawing.Point(46, 94);
             this.setupQuestionLabel.Name = "setupQuestionLabel";
             this.setupQuestionLabel.Size = new System.Drawing.Size(217, 13);
             this.setupQuestionLabel.TabIndex = 6;
@@ -114,7 +114,7 @@
             // linkToSetup
             // 
             this.linkToSetup.AutoSize = true;
-            this.linkToSetup.Location = new System.Drawing.Point(252, 93);
+            this.linkToSetup.Location = new System.Drawing.Point(258, 94);
             this.linkToSetup.Name = "linkToSetup";
             this.linkToSetup.Size = new System.Drawing.Size(31, 13);
             this.linkToSetup.TabIndex = 7;
@@ -126,11 +126,12 @@
             // 
             this.groupBox1.Controls.Add(this.localEmailClientRadio);
             this.groupBox1.Controls.Add(this.linkToSetup);
+            this.groupBox1.Controls.Add(this.setAsDefaultCheckbox);
             this.groupBox1.Controls.Add(this.smtpRadio);
             this.groupBox1.Controls.Add(this.setupQuestionLabel);
             this.groupBox1.Location = new System.Drawing.Point(21, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 124);
+            this.groupBox1.Size = new System.Drawing.Size(335, 170);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -138,10 +139,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 281);
+            this.ClientSize = new System.Drawing.Size(380, 281);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.methodLabel);
-            this.Controls.Add(this.setAsDefaultCheckbox);
             this.Controls.Add(this.methodCancelButton);
             this.Controls.Add(this.methodOkayButton);
             this.Name = "EmailMethodChooseDialog";

@@ -14,9 +14,17 @@ namespace KryptZapper
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormParent());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormParent());
+            }
+            catch ( Exception e )
+            {
+                Console.WriteLine("Exception Occured", e);
+            }
+           
         }
     }
 }
