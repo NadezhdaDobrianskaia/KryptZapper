@@ -65,7 +65,7 @@
             // methodOkayButton
             // 
             this.methodOkayButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.methodOkayButton.Location = new System.Drawing.Point(99, 246);
+            this.methodOkayButton.Location = new System.Drawing.Point(99, 240);
             this.methodOkayButton.Name = "methodOkayButton";
             this.methodOkayButton.Size = new System.Drawing.Size(75, 23);
             this.methodOkayButton.TabIndex = 2;
@@ -75,7 +75,7 @@
             // methodCancelButton
             // 
             this.methodCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.methodCancelButton.Location = new System.Drawing.Point(210, 246);
+            this.methodCancelButton.Location = new System.Drawing.Point(200, 240);
             this.methodCancelButton.Name = "methodCancelButton";
             this.methodCancelButton.Size = new System.Drawing.Size(75, 23);
             this.methodCancelButton.TabIndex = 3;
