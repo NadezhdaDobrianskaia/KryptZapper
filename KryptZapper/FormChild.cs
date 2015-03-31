@@ -145,6 +145,7 @@ namespace KryptZapper
             {
                 EmailMethodChooseDialog chooseMethod = new EmailMethodChooseDialog();
 
+                ////////////////////////////////////////////////////////////////////////////
                 if (chooseMethod.ShowDialog() == DialogResult.OK)
                 {
                     if (chooseMethod.Selection == "local")
@@ -155,6 +156,7 @@ namespace KryptZapper
                     }
                     else
                     {
+                        //-----------------------------------------------------
                         if (isEmailSetup == false)
                         {
                             AccountSetUpDialog accountSet = new AccountSetUpDialog();
@@ -164,9 +166,11 @@ namespace KryptZapper
                             }
 
                         }
+                        //-----------------------------------------------------
                         else if (isEmailSetup == true)
                         {
                             EmailDialog emailSet = new EmailDialog();
+
                             if (emailSet.ShowDialog() == DialogResult.OK)
                             {
                                 var smtp = new SmtpClient
@@ -189,6 +193,7 @@ namespace KryptZapper
                             }
 
                         }
+                        //----------------------------------------------------------
 
 
                     }
@@ -197,6 +202,7 @@ namespace KryptZapper
                 {
                     chooseMethod.Close();
                 }
+                /////////////////////////////////////////////////////////////////////////////////
             }
 
 

@@ -36,6 +36,8 @@
             this.setupPortText = new System.Windows.Forms.TextBox();
             this.setupUsernameText = new System.Windows.Forms.TextBox();
             this.setupCancelButton = new System.Windows.Forms.Button();
+            this.setupPasswordText = new System.Windows.Forms.TextBox();
+            this.setupPasswordLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // setupUsernameLabel
@@ -68,7 +70,7 @@
             // setupOKButton
             // 
             this.setupOKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.setupOKButton.Location = new System.Drawing.Point(81, 157);
+            this.setupOKButton.Location = new System.Drawing.Point(89, 199);
             this.setupOKButton.Name = "setupOKButton";
             this.setupOKButton.Size = new System.Drawing.Size(75, 23);
             this.setupOKButton.TabIndex = 3;
@@ -99,18 +101,36 @@
             // setupCancelButton
             // 
             this.setupCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.setupCancelButton.Location = new System.Drawing.Point(190, 157);
+            this.setupCancelButton.Location = new System.Drawing.Point(190, 199);
             this.setupCancelButton.Name = "setupCancelButton";
             this.setupCancelButton.Size = new System.Drawing.Size(75, 23);
             this.setupCancelButton.TabIndex = 7;
             this.setupCancelButton.Text = "Cancel";
             this.setupCancelButton.UseVisualStyleBackColor = true;
             // 
+            // setupPasswordText
+            // 
+            this.setupPasswordText.Location = new System.Drawing.Point(101, 143);
+            this.setupPasswordText.Name = "setupPasswordText";
+            this.setupPasswordText.Size = new System.Drawing.Size(214, 20);
+            this.setupPasswordText.TabIndex = 8;
+            // 
+            // setupPasswordLabel
+            // 
+            this.setupPasswordLabel.AutoSize = true;
+            this.setupPasswordLabel.Location = new System.Drawing.Point(30, 150);
+            this.setupPasswordLabel.Name = "setupPasswordLabel";
+            this.setupPasswordLabel.Size = new System.Drawing.Size(56, 13);
+            this.setupPasswordLabel.TabIndex = 9;
+            this.setupPasswordLabel.Text = "Password:";
+            // 
             // AccountSetUpDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 207);
+            this.ClientSize = new System.Drawing.Size(351, 246);
+            this.Controls.Add(this.setupPasswordLabel);
+            this.Controls.Add(this.setupPasswordText);
             this.Controls.Add(this.setupCancelButton);
             this.Controls.Add(this.setupUsernameText);
             this.Controls.Add(this.setupPortText);
@@ -136,5 +156,7 @@
         private System.Windows.Forms.TextBox setupPortText;
         private System.Windows.Forms.TextBox setupUsernameText;
         private System.Windows.Forms.Button setupCancelButton;
+        private System.Windows.Forms.TextBox setupPasswordText;
+        private System.Windows.Forms.Label setupPasswordLabel;
     }
 }
