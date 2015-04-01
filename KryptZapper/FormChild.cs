@@ -351,6 +351,8 @@ namespace KryptZapper
                 MessageBox.Show("Exception caught");
             }
 
+            return null;
+
         }
 
         private void nadiaUserControl1_NadiaDecryption_Click(object sender, EventArgs e)
