@@ -76,6 +76,12 @@
     <Compile Include="DialogSaveChild.Designer.cs">
       <DependentUpon>DialogSaveChild.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogUserNameEncryptedFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUserNameEncryptedFile.Designer.cs">
+      <DependentUpon>DialogUserNameEncryptedFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmailDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogSaveChild.resx">
       <DependentUpon>DialogSaveChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUserNameEncryptedFile.resx">
+      <DependentUpon>DialogUserNameEncryptedFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmailDialog.resx">
       <DependentUpon>EmailDialog.cs</DependentUpon>

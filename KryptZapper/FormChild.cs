@@ -68,8 +68,15 @@ namespace KryptZapper
             // if it is already encrypted
             if (ext.CompareTo("kpt") == 0)
             {
-                nadiaUserControl1.ButtonEncrypted = true;
-                nadiaUserControl1.ButtonActivated = false;
+                do
+                {
+                    DialogUserNameEncryptedFile user = new DialogUserNameEncryptedFile();
+                    if (user.ShowDialog() == DialogResult.OK)
+                    {
+                        string myUser = user.UserName;
+                        nadiaUserControl1.SetUser = myUser;
+                    }
+                } while (nadiaUserControl1.UserExists == false);
                 fileExt = "Krypt-Zapper Files | *.kpt";
             }
             else

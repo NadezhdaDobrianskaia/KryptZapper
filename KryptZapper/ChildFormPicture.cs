@@ -359,8 +359,8 @@ namespace KryptZapper
         private void nadiaUserControlPicture_NadiaDecryption_Click(object sender, EventArgs e)
         {
             //DecryptChild();
+           // _privateKey = nadiaUserControlPicture.PrivateKey;
             _privateKey = nadiaUserControlPicture.PrivateKey;
-             
                 Image myImage = pictureBox1.Image;
             string text =  ImageToBase64(myImage, System.Drawing.Imaging.ImageFormat.Jpeg);
 
