@@ -35,6 +35,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setUpAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,7 @@
             this.decriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.attachPhotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogParent = new System.Windows.Forms.OpenFileDialog();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -57,7 +59,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripEmailLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStripEmailButton = new System.Windows.Forms.ToolStripButton();
-            this.setUpAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialogPicture = new System.Windows.Forms.OpenFileDialog();
             this.menuStripParent.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +70,8 @@
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.attachPhotoToolStripMenuItem});
             this.menuStripParent.Location = new System.Drawing.Point(0, 0);
             this.menuStripParent.Name = "menuStripParent";
             this.menuStripParent.Size = new System.Drawing.Size(657, 24);
@@ -116,6 +119,13 @@
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.saveAsToolStripMenuItem.Text = "&Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // setUpAccountToolStripMenuItem
+            // 
+            this.setUpAccountToolStripMenuItem.Name = "setUpAccountToolStripMenuItem";
+            this.setUpAccountToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.setUpAccountToolStripMenuItem.Text = "Set Up Account";
+            this.setUpAccountToolStripMenuItem.Click += new System.EventHandler(this.setUpAccountToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -198,6 +208,13 @@
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // attachPhotoToolStripMenuItem
+            // 
+            this.attachPhotoToolStripMenuItem.Name = "attachPhotoToolStripMenuItem";
+            this.attachPhotoToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.attachPhotoToolStripMenuItem.Text = "Attach Photo";
+            this.attachPhotoToolStripMenuItem.Click += new System.EventHandler(this.attachPhotoToolStripMenuItem_Click);
+            // 
             // openFileDialogParent
             // 
             this.openFileDialogParent.FileName = "openFileDialogParent";
@@ -279,12 +296,9 @@
             this.toolStripEmailButton.Text = "toolStripButton3";
             this.toolStripEmailButton.Click += new System.EventHandler(this.email_Click);
             // 
-            // setUpAccountToolStripMenuItem
+            // openFileDialogPicture
             // 
-            this.setUpAccountToolStripMenuItem.Name = "setUpAccountToolStripMenuItem";
-            this.setUpAccountToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.setUpAccountToolStripMenuItem.Text = "Set Up Account";
-            this.setUpAccountToolStripMenuItem.Click += new System.EventHandler(this.setUpAccountToolStripMenuItem_Click);
+            this.openFileDialogPicture.FileName = "openFileDialogPicture";
             // 
             // FormParent
             // 
@@ -340,6 +354,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem setUpAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem attachPhotoToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialogPicture;
     }
 }
 

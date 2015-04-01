@@ -28,7 +28,6 @@ namespace KryptZapper
         
         //-------------------end RSA fields
 
-
         //reference for it's parent
         private FormParent formParent;
 
@@ -132,10 +131,6 @@ namespace KryptZapper
             }
         }
 
-        
-
-
-
         public void EmailChild()
         {
             EmailMethodChooseDialog chooseMethod = new EmailMethodChooseDialog();
@@ -230,8 +225,10 @@ namespace KryptZapper
         public void EncryptChild(object sender, EventArgs e)
         {
 
-            if(nadiaUserControl1.ButtonEncryptedClick)
+            if (nadiaUserControl1.ButtonEncryptedClick)
+            {
                 nadiaUserControl1_NadiaEncryption_Click(sender, e);
+            }
            /* string text = richTextBox1.Text;
             MyEncryptedText = Encrypt(text);
             richTextBox1.Text = MyEncryptedText;*/
@@ -268,6 +265,8 @@ namespace KryptZapper
             string text = richTextBox1.Text;
             MyEncryptedText = Decrypt(text);
             richTextBox1.Text = MyEncryptedText;
+            richTextBox1.ReadOnly = false;
+
         }
 
         private void nadiaUserControl1_NadiaEncryption_Click(object sender, EventArgs e)
@@ -279,6 +278,7 @@ namespace KryptZapper
             MessageBox.Show("RSA // Text to encrypt: " + text);
             MyEncryptedText = Encrypt(text);
             richTextBox1.Text = MyEncryptedText;
+            richTextBox1.ReadOnly = true;
 
         }
 //--------------------------------------end RSA Encryptiion /Decryption

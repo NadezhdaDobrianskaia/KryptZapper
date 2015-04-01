@@ -16,7 +16,7 @@ using System.Windows.Forms;
  * Prototype Version: 1.0
  * Date: Feb 03, 2015
  */
-namespace KryptZapper
+namespace KryptZapper 
 {
     public partial class FormParent : Form
     {
@@ -115,6 +115,7 @@ namespace KryptZapper
             {
                 FormChild child = (FormChild)thisChild;
                 child.saveAs();
+                
             }
             else
                 MessageBox.Show("Must Have at least one file opened");
@@ -177,17 +178,28 @@ namespace KryptZapper
             thisChild = this.ActiveMdiChild;
             while (thisChild != null)
             {
-                FormChild child = (FormChild)thisChild;
-                DialogSaveChild close = new DialogSaveChild();
-                if (close.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    child.close();
+                    FormChild child = (FormChild)thisChild;
+                    DialogSaveChild close = new DialogSaveChild();
+                    if (close.ShowDialog() == DialogResult.OK)
+                    {
+                        child.close();
+                    }
+                    else
+                    {
+                        child.Dispose();
+                    }
+                    thisChild = this.ActiveMdiChild;
                 }
-                else
+                catch (System.InvalidCastException exp)  //exception added in order to close if the child view is a picture view
                 {
-                    child.Dispose();
+                    ChildFormPicture child2 = (ChildFormPicture)thisChild;
+                    //child.close();
+                    child2.Dispose();
+                    thisChild = this.ActiveMdiChild;
                 }
-                thisChild = this.ActiveMdiChild;
+                
             }
 
             Application.Exit();
@@ -306,6 +318,37 @@ namespace KryptZapper
             if (MdiChildren.Length == 0)
             {
                 toggleToolsAvailability("off");
+            }
+        }
+
+        private void attachPhotoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialogPicture.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    String filename = openFileDialogPicture.FileName;
+                    Image openedImage = Image.FromFile(filename);
+
+                    Image openedImageCopy = new Bitmap(openedImage);
+                    openedImage.Dispose();
+                    ChildFormPicture child = new ChildFormPicture(openedImageCopy, filename);
+                    child.MdiParent = this;
+                    child.Show();
+                }
+                catch (OutOfMemoryException outOfMemoryException)
+                {
+                    MessageBox.Show("\n" + outOfMemoryException.Message);
+                }
+                catch (FileNotFoundException fileNotFoundException)
+                {
+                    MessageBox.Show("\n" + fileNotFoundException.Message);
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show("\n" + argumentException.Message);
+                }
             }
         }
 
