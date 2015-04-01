@@ -45,9 +45,9 @@
             this.setupUsernameLabel.AutoSize = true;
             this.setupUsernameLabel.Location = new System.Drawing.Point(30, 105);
             this.setupUsernameLabel.Name = "setupUsernameLabel";
-            this.setupUsernameLabel.Size = new System.Drawing.Size(58, 13);
+            this.setupUsernameLabel.Size = new System.Drawing.Size(35, 13);
             this.setupUsernameLabel.TabIndex = 0;
-            this.setupUsernameLabel.Text = "Username:";
+            this.setupUsernameLabel.Text = "Email:";
             // 
             // setupHostLabel
             // 

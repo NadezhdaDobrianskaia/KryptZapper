@@ -34,7 +34,7 @@ namespace KryptZapper
             }
         }
 
-        public bool defaultChosen
+        public bool DefaultChosen
         {
             get
             {

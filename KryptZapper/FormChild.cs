@@ -18,9 +18,14 @@ namespace KryptZapper
 {
     public partial class FormChild : Form
     {
-        // email method variables
-        bool isDefaultSet = false;
-        string defaultEmailMethod = null;
+        // ----------------------------- email method variables
+        private bool isDefaultSet = false;      // checks if a default was set
+        private string defaultEmailMethod;      // holds a string that determines the users default method
+
+        public static string accountHost;               // holds the users email host
+        public static int accountPort;                  // holds the email port
+        public static string accountPassword;           // holds the users email password
+        public static string accountEmailFrom;               // holds the users email
 
         //---------------------RSA fields
         private RSACryptoServiceProvider rsa;
@@ -31,6 +36,9 @@ namespace KryptZapper
         
         //-------------------end RSA fields
 
+        MailAddress fromAddress;
+        private const String FromName = "From Name";
+        private const String ToName = "To Name";
 
         //reference for it's parent
         private FormParent formParent;
@@ -41,8 +49,6 @@ namespace KryptZapper
         string ext = null; //added for the saveAs
         string justSave = null;  //added for the saveAs
 
-        MailAddress fromAddress = new MailAddress("KryptZapper@gmail.com", "From Name");
-        MailAddress toAddress = new MailAddress("KryptZapper@gmail.com", "To Name");
         const string fromPassword = "techpro3951";
 
         public FormChild(FormParent f)
@@ -135,65 +141,26 @@ namespace KryptZapper
             }
         }
 
-        
-
-
 
         public void EmailChild()
         {
             if (isDefaultSet == false)
             {
                 EmailMethodChooseDialog chooseMethod = new EmailMethodChooseDialog();
+                
 
                 ////////////////////////////////////////////////////////////////////////////
                 if (chooseMethod.ShowDialog() == DialogResult.OK)
                 {
                     if (chooseMethod.Selection == "local")
                     {
-                        System.Diagnostics.Process proc = new System.Diagnostics.Process();
-                        proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
-                        proc.Start();
+                        isDefaultSet = chooseMethod.DefaultChosen;
+                        sendEmail("local");
                     }
                     else
                     {
-                        //-----------------------------------------------------
-                        if (isEmailSetup == false)
-                        {
-                            AccountSetUpDialog accountSet = new AccountSetUpDialog();
-                            if (accountSet.ShowDialog() == DialogResult.Cancel)
-                            {
-                                accountSet.Close();
-                            }
-
-                        }
-                        //-----------------------------------------------------
-                        else if (isEmailSetup == true)
-                        {
-                            EmailDialog emailSet = new EmailDialog();
-
-                            if (emailSet.ShowDialog() == DialogResult.OK)
-                            {
-                                var smtp = new SmtpClient
-                                {
-                                    Host = "smtp.gmail.com",
-                                    Port = 587,
-                                    EnableSsl = true,
-                                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                                    UseDefaultCredentials = false,
-                                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                                };
-                                using (var message = new MailMessage(fromAddress, toAddress)
-                                {
-                                    Subject = "Krypt-Zapper Message",
-                                    Body = richTextBox1.Text
-                                })
-                                {
-                                    smtp.Send(message);
-                                }
-                            }
-
-                        }
-                        //----------------------------------------------------------
+                        isDefaultSet = chooseMethod.DefaultChosen;
+                        sendEmail("account");
 
 
                     }
@@ -204,8 +171,95 @@ namespace KryptZapper
                 }
                 /////////////////////////////////////////////////////////////////////////////////
             }
+            else
+            {
+                sendEmail(defaultEmailMethod);
+            }
 
 
+        }
+
+        public void sendEmail(string method)
+        {
+            if (method.CompareTo("local") == 0)
+            {
+                defaultEmailMethod = "local";
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
+                proc.Start();
+            }
+            else
+            {
+                defaultEmailMethod = "account";
+
+                //-----------------------------------------------------
+                if (isEmailSetup == false)
+                {
+                    AccountSetUpDialog accountSet = new AccountSetUpDialog();
+                    if (accountSet.ShowDialog() == DialogResult.Cancel)
+                    {
+                        accountSet.Close();
+                    }
+                    else //(accountSet.ShowDialog() == DialogResult.OK)
+                    {
+                        accountHost = accountSet.EmailHost;
+                        accountPort = int.Parse(accountSet.EmailPort);
+                        accountPassword = accountSet.EmailPassword;
+                        accountEmailFrom = accountSet.FromEmail;
+
+                        MailAddress fromAddress = new MailAddress(accountEmailFrom, "From Name");
+
+
+                        isEmailSetup = true;
+
+                        sendEmailFromAccountChooseTo();
+                    }
+
+                }
+                //-----------------------------------------------------
+                else if (isEmailSetup == true)
+                {
+                    sendEmailFromAccountChooseTo();
+
+                }
+                //----------------------------------------------------------
+            }
+        }
+
+
+        public void sendEmailFromAccountChooseTo()
+        {
+            // show to email dialog
+            EmailDialog emailSet = new EmailDialog();
+
+            if (emailSet.ShowDialog() == DialogResult.OK)
+            {
+                String accountEmailTo = emailSet.EmailTo;  // holds where user wants to send the mail             
+                MailAddress toAddress = new MailAddress(accountEmailTo, "To Name");
+                var smtp = new SmtpClient
+                {
+
+                    Host = accountHost,
+                    Port = accountPort,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                };
+
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    // hardcoded email subject
+                    Subject = "Krypt-Zapper Message",
+
+                    // pulls text from textbox to send in email
+                    Body = richTextBox1.Text
+
+                })
+                {
+                    smtp.Send(message);
+                }
+            }
         }
 
 

@@ -132,7 +132,7 @@ namespace KryptZapper
                 child.save();
             }
             else
-                MessageBox.Show("Must Have at least one file opened");
+                MessageBox.Show("Must have at least one file opened");
         }
 
         /// <summary>
