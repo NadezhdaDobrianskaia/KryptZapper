@@ -12,9 +12,23 @@ namespace KryptZapper
 {
     public partial class EmailDialog : Form
     {
+
+        private string emailTo;
+
         public EmailDialog()
         {
             InitializeComponent();
         }
+
+        public string EmailTo
+        {
+            get
+            {
+                emailTo = emailRecipientText.Text;
+                return emailTo;
+            }
+        }
+
+    
     }
 }
