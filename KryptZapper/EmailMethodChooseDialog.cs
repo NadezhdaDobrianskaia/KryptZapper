@@ -34,6 +34,21 @@ namespace KryptZapper
             }
         }
 
+        public bool DefaultChosen
+        {
+            get
+            {
+                if (setAsDefaultCheckbox.Checked)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         private void linkToSetup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AccountSetUpDialog setup = new AccountSetUpDialog();

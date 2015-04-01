@@ -21,16 +21,43 @@ namespace KryptZapper
     public partial class FormParent : Form
     {
 
+        private string defaultEmailMethod;      // holds a string that determines the users default method
+
         Form thisChild;
-        bool isDefaultSet = false;
-        string defaultEmailMethod = null;
+        private bool isDefaultSet = false;      // checks if a default was set
 
         public FormParent()
         {
             InitializeComponent();
             toggleToolsAvailability("off");
+            if(defaultEmailMethod == null)
+            {
+                useDefaultToolStripMenuItem.Enabled = false;
+            }
+            
         }
 
+        public bool getDefaultSet()
+        {
+            return isDefaultSet;
+        }
+
+        public void setDefault(bool b)
+        {
+            isDefaultSet = b;
+            useDefaultToolStripMenuItem.Checked = b;
+            useDefaultToolStripMenuItem.Enabled = true;
+        }
+
+        public string getDefaultEmailMethod()
+        {
+            return defaultEmailMethod;
+        }
+
+        public void setDefaultEmailMethod(string s)
+        {
+            defaultEmailMethod = s;
+        }
 
         /// <summary>
         /// changes the availability of the tools controls depending
@@ -134,7 +161,7 @@ namespace KryptZapper
                 child.save();
             }
             else
-                MessageBox.Show("Must Have at least one file opened");
+                MessageBox.Show("Must have at least one file opened");
         }
 
         /// <summary>
@@ -177,17 +204,28 @@ namespace KryptZapper
             thisChild = this.ActiveMdiChild;
             while (thisChild != null)
             {
-                FormChild child = (FormChild)thisChild;
-                DialogSaveChild close = new DialogSaveChild();
-                if (close.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    child.close();
+                    FormChild child = (FormChild)thisChild;
+                    DialogSaveChild close = new DialogSaveChild();
+                    if (close.ShowDialog() == DialogResult.OK)
+                    {
+                        child.close();
+                    }
+                    else
+                    {
+                        child.Dispose();
+                    }
+                    thisChild = this.ActiveMdiChild;
                 }
-                else
+                catch (System.InvalidCastException exp)  //exception added in order to close if the child view is a picture view
                 {
-                    child.Dispose();
+                    ChildFormPicture child2 = (ChildFormPicture)thisChild;
+                    //child.close();
+                    child2.Dispose();
+                    thisChild = this.ActiveMdiChild;
                 }
-                thisChild = this.ActiveMdiChild;
+
             }
 
             Application.Exit();
@@ -306,6 +344,43 @@ namespace KryptZapper
             if (MdiChildren.Length == 0)
             {
                 toggleToolsAvailability("off");
+            }
+        }
+
+        private void toggleDefault(object sender, EventArgs e)
+        {
+            useDefaultToolStripMenuItem.Checked = (!useDefaultToolStripMenuItem.Checked);
+            isDefaultSet = useDefaultToolStripMenuItem.Checked;
+        }
+
+        private void attachPictureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialogPicture.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    String filename = openFileDialogPicture.FileName;
+                    Image openedImage = Image.FromFile(filename);
+
+                    Image openedImageCopy = new Bitmap(openedImage);
+                    openedImage.Dispose();
+                    ChildFormPicture child = new ChildFormPicture(openedImageCopy, filename);
+                    child.MdiParent = this;
+                    child.Show();
+                }
+                catch (OutOfMemoryException outOfMemoryException)
+                {
+                    MessageBox.Show("\n" + outOfMemoryException.Message);
+                }
+                catch (FileNotFoundException fileNotFoundException)
+                {
+                    MessageBox.Show("\n" + fileNotFoundException.Message);
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show("\n" + argumentException.Message);
+                }
             }
         }
 
