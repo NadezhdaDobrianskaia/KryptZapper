@@ -57,7 +57,9 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripEmailLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStripEmailButton = new System.Windows.Forms.ToolStripButton();
-            this.setUpAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.setUpAccountToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.useDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripParent.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +70,8 @@
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.emailToolStripMenuItem1});
             this.menuStripParent.Location = new System.Drawing.Point(0, 0);
             this.menuStripParent.Name = "menuStripParent";
             this.menuStripParent.Size = new System.Drawing.Size(657, 24);
@@ -82,7 +85,6 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
-            this.setUpAccountToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -92,40 +94,40 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "&Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(153, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -279,12 +281,28 @@
             this.toolStripEmailButton.Text = "toolStripButton3";
             this.toolStripEmailButton.Click += new System.EventHandler(this.email_Click);
             // 
-            // setUpAccountToolStripMenuItem
+            // emailToolStripMenuItem1
             // 
-            this.setUpAccountToolStripMenuItem.Name = "setUpAccountToolStripMenuItem";
-            this.setUpAccountToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.setUpAccountToolStripMenuItem.Text = "Set Up Account";
-            this.setUpAccountToolStripMenuItem.Click += new System.EventHandler(this.setUpAccountToolStripMenuItem_Click);
+            this.emailToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setUpAccountToolStripMenuItem1,
+            this.useDefaultToolStripMenuItem});
+            this.emailToolStripMenuItem1.Name = "emailToolStripMenuItem1";
+            this.emailToolStripMenuItem1.Size = new System.Drawing.Size(93, 20);
+            this.emailToolStripMenuItem1.Text = "Email Settings";
+            // 
+            // setUpAccountToolStripMenuItem1
+            // 
+            this.setUpAccountToolStripMenuItem1.Name = "setUpAccountToolStripMenuItem1";
+            this.setUpAccountToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.setUpAccountToolStripMenuItem1.Text = "Set Up Account";
+            this.setUpAccountToolStripMenuItem1.Click += new System.EventHandler(this.setUpAccountToolStripMenuItem_Click);
+            // 
+            // useDefaultToolStripMenuItem
+            // 
+            this.useDefaultToolStripMenuItem.Name = "useDefaultToolStripMenuItem";
+            this.useDefaultToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.useDefaultToolStripMenuItem.Text = "Use Default";
+            this.useDefaultToolStripMenuItem.Click += new System.EventHandler(this.toggleDefault);
             // 
             // FormParent
             // 
@@ -339,7 +357,9 @@
         private System.Windows.Forms.ToolStripButton toolStripEmailButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem setUpAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem setUpAccountToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem useDefaultToolStripMenuItem;
     }
 }
 

@@ -19,8 +19,7 @@ namespace KryptZapper
     public partial class FormChild : Form
     {
         // ----------------------------- email method variables
-        private bool isDefaultSet = false;      // checks if a default was set
-        private string defaultEmailMethod;      // holds a string that determines the users default method
+        
 
         public static string accountHost;               // holds the users email host
         public static int accountPort;                  // holds the email port
@@ -144,7 +143,7 @@ namespace KryptZapper
 
         public void EmailChild()
         {
-            if (isDefaultSet == false)
+            if (formParent.getDefaultSet() == false)
             {
                 EmailMethodChooseDialog chooseMethod = new EmailMethodChooseDialog();
                 
@@ -154,12 +153,12 @@ namespace KryptZapper
                 {
                     if (chooseMethod.Selection == "local")
                     {
-                        isDefaultSet = chooseMethod.DefaultChosen;
+                        formParent.setDefault(chooseMethod.DefaultChosen);
                         sendEmail("local");
                     }
                     else
                     {
-                        isDefaultSet = chooseMethod.DefaultChosen;
+                        formParent.setDefault(chooseMethod.DefaultChosen);
                         sendEmail("account");
 
 
@@ -173,7 +172,7 @@ namespace KryptZapper
             }
             else
             {
-                sendEmail(defaultEmailMethod);
+                sendEmail(formParent.getDefaultEmailMethod());
             }
 
 
@@ -183,14 +182,14 @@ namespace KryptZapper
         {
             if (method.CompareTo("local") == 0)
             {
-                defaultEmailMethod = "local";
+                formParent.setDefaultEmailMethod("local");
                 System.Diagnostics.Process proc = new System.Diagnostics.Process();
                 proc.StartInfo.FileName = "mailto:?subject=Krypt-Zapper message&body=" + richTextBox1.Text;
                 proc.Start();
             }
             else
             {
-                defaultEmailMethod = "account";
+                formParent.setDefaultEmailMethod("account");
 
                 //-----------------------------------------------------
                 if (isEmailSetup == false)
@@ -207,7 +206,7 @@ namespace KryptZapper
                         accountPassword = accountSet.EmailPassword;
                         accountEmailFrom = accountSet.FromEmail;
 
-                        MailAddress fromAddress = new MailAddress(accountEmailFrom, "From Name");
+                        fromAddress = new MailAddress(accountEmailFrom, "From Name");
 
 
                         isEmailSetup = true;

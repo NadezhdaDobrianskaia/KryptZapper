@@ -21,14 +21,43 @@ namespace KryptZapper
     public partial class FormParent : Form
     {
 
+        private string defaultEmailMethod;      // holds a string that determines the users default method
+
         Form thisChild;
+        private bool isDefaultSet = false;      // checks if a default was set
 
         public FormParent()
         {
             InitializeComponent();
             toggleToolsAvailability("off");
+            if(defaultEmailMethod == null)
+            {
+                useDefaultToolStripMenuItem.Enabled = false;
+            }
+            
         }
 
+        public bool getDefaultSet()
+        {
+            return isDefaultSet;
+        }
+
+        public void setDefault(bool b)
+        {
+            isDefaultSet = b;
+            useDefaultToolStripMenuItem.Checked = b;
+            useDefaultToolStripMenuItem.Enabled = true;
+        }
+
+        public string getDefaultEmailMethod()
+        {
+            return defaultEmailMethod;
+        }
+
+        public void setDefaultEmailMethod(string s)
+        {
+            defaultEmailMethod = s;
+        }
 
         /// <summary>
         /// changes the availability of the tools controls depending
@@ -305,6 +334,12 @@ namespace KryptZapper
             {
                 toggleToolsAvailability("off");
             }
+        }
+
+        private void toggleDefault(object sender, EventArgs e)
+        {
+            useDefaultToolStripMenuItem.Checked = (!useDefaultToolStripMenuItem.Checked);
+            isDefaultSet = useDefaultToolStripMenuItem.Checked;
         }
 
     }

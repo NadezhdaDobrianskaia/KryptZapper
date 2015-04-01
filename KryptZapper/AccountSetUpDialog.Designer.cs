@@ -73,7 +73,7 @@
             this.setupOKButton.Location = new System.Drawing.Point(89, 199);
             this.setupOKButton.Name = "setupOKButton";
             this.setupOKButton.Size = new System.Drawing.Size(75, 23);
-            this.setupOKButton.TabIndex = 3;
+            this.setupOKButton.TabIndex = 8;
             this.setupOKButton.Text = "Submit";
             this.setupOKButton.UseVisualStyleBackColor = true;
             // 
@@ -104,7 +104,7 @@
             this.setupCancelButton.Location = new System.Drawing.Point(190, 199);
             this.setupCancelButton.Name = "setupCancelButton";
             this.setupCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.setupCancelButton.TabIndex = 7;
+            this.setupCancelButton.TabIndex = 9;
             this.setupCancelButton.Text = "Cancel";
             this.setupCancelButton.UseVisualStyleBackColor = true;
             // 
@@ -113,7 +113,7 @@
             this.setupPasswordText.Location = new System.Drawing.Point(101, 143);
             this.setupPasswordText.Name = "setupPasswordText";
             this.setupPasswordText.Size = new System.Drawing.Size(214, 20);
-            this.setupPasswordText.TabIndex = 8;
+            this.setupPasswordText.TabIndex = 7;
             // 
             // setupPasswordLabel
             // 
