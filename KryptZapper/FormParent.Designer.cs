@@ -60,6 +60,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripEmailLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStripEmailButton = new System.Windows.Forms.ToolStripButton();
+            this.attachPictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialogPicture = new System.Windows.Forms.OpenFileDialog();
             this.menuStripParent.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +73,8 @@
             this.viewToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.emailToolStripMenuItem1});
+            this.emailToolStripMenuItem1,
+            this.attachPictureToolStripMenuItem});
             this.menuStripParent.Location = new System.Drawing.Point(0, 0);
             this.menuStripParent.Name = "menuStripParent";
             this.menuStripParent.Size = new System.Drawing.Size(657, 24);
@@ -304,6 +307,17 @@
             this.toolStripEmailButton.Text = "toolStripButton3";
             this.toolStripEmailButton.Click += new System.EventHandler(this.email_Click);
             // 
+            // attachPictureToolStripMenuItem
+            // 
+            this.attachPictureToolStripMenuItem.Name = "attachPictureToolStripMenuItem";
+            this.attachPictureToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.attachPictureToolStripMenuItem.Text = "Attach Picture";
+            this.attachPictureToolStripMenuItem.Click += new System.EventHandler(this.attachPictureToolStripMenuItem_Click);
+            // 
+            // openFileDialogPicture
+            // 
+            this.openFileDialogPicture.FileName = "openFileDialog1";
+            // 
             // FormParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +374,8 @@
         private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem setUpAccountToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem useDefaultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem attachPictureToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialogPicture;
     }
 }
 
