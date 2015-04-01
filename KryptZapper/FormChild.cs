@@ -28,6 +28,8 @@ namespace KryptZapper
         
         //-------------------end RSA fields
 
+        // store the file type for this file
+        private string fileExt = "";
 
         //reference for it's parent
         private FormParent formParent;
@@ -46,11 +48,25 @@ namespace KryptZapper
         {
             InitializeComponent();
             formParent = f;
+            fileExt = "Text Files | *.txt";
         }
 
         public FormChild(string path, string file, FormParent f)     //constructor
         {
             InitializeComponent();
+            String ext = path.Substring(path.IndexOf(".", 0) + 1, 3);
+
+            // if it is already encrypted
+            if (ext.CompareTo("kpt") == 0)
+            {
+                nadiaUserControl1.ButtonEncrypted = true;
+                nadiaUserControl1.ButtonActivated = false;
+                fileExt = "Krypt-Zapper Files | *.kpt";
+            }
+            else
+            {
+                fileExt = "Text Files | *.txt";
+            }
             formParent = f;
             richTextBox1.Text = file;
             MessageBox.Show("I opened a file");
@@ -64,7 +80,7 @@ namespace KryptZapper
         public void saveAs()
         {
             SaveFileDialog saveText = new SaveFileDialog();
-            saveText.Filter = "Text Files | *.txt";
+            saveText.Filter = fileExt;
             string text = richTextBox1.Text;
 
             if (saveText.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -205,6 +221,7 @@ namespace KryptZapper
         /// <returns></returns>
         private string Encrypt(string data)
         {
+            fileExt = "Krypt-Zapper Files | *.kpt";
             var rsa = new RSACryptoServiceProvider();
             rsa.FromXmlString(_publicKey);
             var dataToEncrypt = _encoder.GetBytes(data);
@@ -248,6 +265,7 @@ namespace KryptZapper
         }
         private string Decrypt(string data)
         {
+            fileExt = "Text Files | *.txt";
             var rsa = new RSACryptoServiceProvider();
             var dataArray = data.Split(new char[] { ',' });
             byte[] dataByte = new byte[dataArray.Length];
@@ -255,10 +273,18 @@ namespace KryptZapper
             {
                 dataByte[i] = Convert.ToByte(dataArray[i]);
             }
+            try
+            {
+                rsa.FromXmlString(_privateKey);
+                var decryptedByte = rsa.Decrypt(dataByte, false);
+                return _encoder.GetString(decryptedByte);
+            }
+            catch
+            {
+                MessageBox.Show("Exception caught");
+            }
+            return null;
 
-            rsa.FromXmlString(_privateKey);
-            var decryptedByte = rsa.Decrypt(dataByte, false);
-            return _encoder.GetString(decryptedByte);
         }
 
         private void nadiaUserControl1_NadiaDecryption_Click(object sender, EventArgs e)
