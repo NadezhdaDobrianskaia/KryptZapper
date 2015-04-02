@@ -234,7 +234,7 @@ namespace KryptZapper
         string Encrypted;
 
         /// <summary>
-        /// encrypts the text in the current MDI chiild form
+        /// encrypts the text  in the current MDI chiild form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
