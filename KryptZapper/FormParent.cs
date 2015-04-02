@@ -90,7 +90,7 @@ namespace KryptZapper
             AboutDialog aboutPage = new AboutDialog();
             if (aboutPage.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("About worked");
+                aboutPage.Close();
             }
         }
 
@@ -280,8 +280,6 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void email_Click(object sender, EventArgs e)
         {
-
-            MessageBox.Show("Emailing document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
 
