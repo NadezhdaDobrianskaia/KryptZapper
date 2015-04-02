@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptZapper", "KryptZapper\KryptZapper.csproj", "{2FAA7A2F-C699-41C0-AAEB-077E35520264}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupKZ", "SetupKZ\SetupKZ.vdproj", "{0BB89CED-65B5-4A8F-86EF-7B426E7D48B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{2FAA7A2F-C699-41C0-AAEB-077E35520264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FAA7A2F-C699-41C0-AAEB-077E35520264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FAA7A2F-C699-41C0-AAEB-077E35520264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB89CED-65B5-4A8F-86EF-7B426E7D48B5}.Debug|Any CPU.ActiveCfg = Debug
+		{0BB89CED-65B5-4A8F-86EF-7B426E7D48B5}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
