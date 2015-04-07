@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.nadiaUserControlPicture = new NadiaUserControl.NadiaUserControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // nadiaUserControlPicture
-            // 
-            this.nadiaUserControlPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.nadiaUserControlPicture.Location = new System.Drawing.Point(12, 3);
-            this.nadiaUserControlPicture.Name = "nadiaUserControlPicture";
-            this.nadiaUserControlPicture.Size = new System.Drawing.Size(207, 119);
-            this.nadiaUserControlPicture.TabIndex = 0;
-            this.nadiaUserControlPicture.NadiaEncryption_Click += new NadiaUserControl.NadiaClickHandler(this.nadiaUserControlPicture_NadiaEncryption_Click);
-            this.nadiaUserControlPicture.NadiaDecryption_Click += new NadiaUserControl.NadiaClickHandler(this.nadiaUserControlPicture_NadiaDecryption_Click);
             // 
             // pictureBox1
             // 
@@ -53,15 +42,15 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // buttonTest
             // 
-            this.button1.Location = new System.Drawing.Point(270, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonTest.Location = new System.Drawing.Point(106, 48);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(190, 23);
+            this.buttonTest.TabIndex = 2;
+            this.buttonTest.Text = "Encrypt / Decrypt Test";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.button1_Click);
             // 
             // ChildFormPicture
             // 
@@ -69,9 +58,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(415, 429);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.nadiaUserControlPicture);
             this.Name = "ChildFormPicture";
             this.Text = "ChildFormPicture";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -82,8 +70,7 @@
 
         #endregion
 
-        private NadiaUserControl.NadiaUserControl nadiaUserControlPicture;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTest;
     }
 }

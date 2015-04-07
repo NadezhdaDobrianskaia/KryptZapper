@@ -339,37 +339,9 @@ namespace KryptZapper
 
         }
 
-        private void nadiaUserControlPicture_NadiaEncryption_Click(object sender, EventArgs e)
-        {
-            // _privateKey = nadiaUserControl1.PrivateKey;
-            _publicKey = nadiaUserControlPicture.PublicKey;
-            MessageBox.Show(_publicKey);
-            Image myImage = pictureBox1.Image;
-            string imageString = ImageToBase64(myImage, System.Drawing.Imaging.ImageFormat.Jpeg);
+       
 
-            string text = imageString;
-            //MessageBox.Show("RSA // Text to encrypt: " + text);
-            MyEncryptedText = Encrypt(text);
-            Image second = null;//Base64ToImage(MyEncryptedText);
-            pictureBox1.Image = second;
-            //richTextBox1.Text = MyEncryptedText;
-            // richTextBox1.ReadOnly = true;
-        }
-
-        private void nadiaUserControlPicture_NadiaDecryption_Click(object sender, EventArgs e)
-        {
-            //DecryptChild();
-           // _privateKey = nadiaUserControlPicture.PrivateKey;
-            _privateKey = nadiaUserControlPicture.PrivateKey;
-                Image myImage = pictureBox1.Image;
-            string text =  ImageToBase64(myImage, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            MyEncryptedText = Decrypt(text);
-            Image second = Base64ToImage(MyEncryptedText);
-            pictureBox1.Image = second;
-
-
-        }
+        
 
 
         //------------end RSA algorythm
