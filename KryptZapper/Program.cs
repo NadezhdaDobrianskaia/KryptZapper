@@ -16,9 +16,10 @@ namespace KryptZapper
         {
             try
             {
+                string[] args = Environment.GetCommandLineArgs();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormParent());
+                Application.Run(new FormParent(args));
             }
             catch ( Exception e )
             {

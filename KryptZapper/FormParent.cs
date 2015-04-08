@@ -26,9 +26,22 @@ namespace KryptZapper
         Form thisChild;
         private bool isDefaultSet = false;      // checks if a default was set
 
-        public FormParent()
+        public FormParent(string[] args)
         {
             InitializeComponent();
+            if (args.Length==3)
+            {
+
+                String filename = args[1];
+                MessageBox.Show(filename);
+                string text = System.IO.File.ReadAllText(filename);
+                FormChild child = new FormChild(filename, text, this); //filename is the path
+                toggleToolsAvailability("on");
+                child.MdiParent = this;
+                child.Text = filename;
+                child.Show(); //show the child    
+
+            }
             toggleToolsAvailability("off");
             if(defaultEmailMethod == null)
             {
