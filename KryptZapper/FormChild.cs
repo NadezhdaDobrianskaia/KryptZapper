@@ -86,9 +86,7 @@ namespace KryptZapper
 
             formParent = f;
             richTextBox1.Text = file;
-            MessageBox.Show("I opened a file");
             justSave = path;
-            MessageBox.Show(file);
         }
 
         /// <summary>
@@ -108,7 +106,6 @@ namespace KryptZapper
                 sw.Flush();
                 sw.Close();
                 justSave = saveText.FileName;
-                MessageBox.Show(justSave);
             }
         }
 
@@ -119,17 +116,15 @@ namespace KryptZapper
         public void save()
         {
             string text = richTextBox1.Text;
-            MessageBox.Show("SaveWasPressed");
             if (System.IO.File.Exists(justSave))
             {
                 System.IO.File.WriteAllText(justSave, text);
-                MessageBox.Show("FileExists");
-                MessageBox.Show(justSave);
+                MessageBox.Show("File Already Exists");
             }
             else
             {
-                MessageBox.Show("File did not Exist");
                 saveAs();
+                MessageBox.Show("Your file has been saved");
             }
         }
 
@@ -355,7 +350,7 @@ namespace KryptZapper
             }
             catch
             {
-                MessageBox.Show("Exception caught");
+                Console.WriteLine("Exception Caught");
             }
 
             return null;
@@ -377,7 +372,6 @@ namespace KryptZapper
            // _privateKey = nadiaUserControl1.PrivateKey;
             _publicKey = nadiaUserControl1.PublicKey;
             string text = richTextBox1.Text;
-            MessageBox.Show("RSA // Text to encrypt: " + text);
             MyEncryptedText = Encrypt(text);
             richTextBox1.Text = MyEncryptedText;
 

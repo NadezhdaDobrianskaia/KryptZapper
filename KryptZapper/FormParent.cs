@@ -253,7 +253,6 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void encrypt_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Encrypting document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
             try
@@ -273,7 +272,6 @@ namespace KryptZapper
         /// <param name="e"></param>
         private void decrypt_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Decrypting document");
             thisChild = this.ActiveMdiChild;
             FormChild child = (FormChild)thisChild;
             try
@@ -342,7 +340,9 @@ namespace KryptZapper
             AccountSetUpDialog setupPage = new AccountSetUpDialog();
             if (setupPage.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Submit worked");
+                MessageBox.Show("This feature will be coming soon!");
+                // This feature will be implemented in the future. Check our Design Document
+                // to read our plans for this item.
             }
         }
 
@@ -382,15 +382,15 @@ namespace KryptZapper
                 }
                 catch (OutOfMemoryException outOfMemoryException)
                 {
-                    MessageBox.Show("\n" + outOfMemoryException.Message);
+                    Console.WriteLine("\n" + outOfMemoryException.Message);
                 }
                 catch (FileNotFoundException fileNotFoundException)
                 {
-                    MessageBox.Show("\n" + fileNotFoundException.Message);
+                    Console.WriteLine("\n" + fileNotFoundException.Message);
                 }
                 catch (ArgumentException argumentException)
                 {
-                    MessageBox.Show("\n" + argumentException.Message);
+                    Console.WriteLine("\n" + argumentException.Message);
                 }
             }
         }
